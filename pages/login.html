@@ -22,31 +22,37 @@
 
     <main class="login__main">
         <section class="general">
-            <div class="pricesDB sched-container">
-                <h2>Precios Cursos de Ingles General</h2>
-                <form id="pricesFormDB" class="course__sched">
-                    <label for="monthlyPay">Valor pago mensual:</label>
-                    <input type="number" name="monthlyPay" id="monthlyPay" />
-                    <label for="coursePay">Valor pago cuatrimestral:</label>
-                    <input type="number" name="coursePay" id="coursePay" />
-                    <button type="submit">Enviar</button>
-                </form>
-            </div>
-            <div class="sched-container">
-                <h2>Agregar Cursos de Ingles General</h2>
-                <form id="coursesScheduleDB" class="course__sched">
-                    <label for="name">Cusrso:</label>
-                    <input type="text" name="name" id="name" />
-                    <label for="date">Fecha:</label>
-                    <input type="text" name="date" id="date" />
-                    <label for="day">Dia:</label>
-                    <input type="text" name="day" id="day" />
-                    <label for="time">Hora:</label>
-                    <input type="text" name="time" id="time" />
-                    <button id="add">Agregar curso</button>
-                    <button id="publishSchedButton">Publicar cursos</button>
-                </form>
-            </div>
+            <h2> Cursos de Ingles General</h2>
+            <article>
+
+                <div class="pricesDB sched-container">
+                    <form id="pricesFormDB" class="course__sched">
+                        <label for="monthlyPay">Valor pago mensual:</label>
+                        <input type="number" name="monthlyPay" id="monthlyPay" />
+                        <label for="coursePay">Valor pago cuatrimestral:</label>
+                        <input type="number" name="coursePay" id="coursePay" />
+                        <div>
+                            <button type="submit">Enviar</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="sched-container">
+                    <form id="coursesScheduleDB" class="course__sched">
+                        <label for="name">Cusrso:</label>
+                        <input type="text" name="name" id="name" />
+                        <label for="date">Fecha:</label>
+                        <input type="text" name="date" id="date" />
+                        <label for="day">Dia:</label>
+                        <input type="text" name="day" id="day" />
+                        <label for="time">Hora:</label>
+                        <input type="text" name="time" id="time" />
+                        <div>
+                            <button id="add">Agregar curso</button>
+                            <button id="publishSchedButton">Publicar cursos</button>
+                        </div>
+                    </form>
+                </div>
+            </article>
         </section>
         <section class="individuales">
             <div class="sched-container">
@@ -54,23 +60,10 @@
                 <form id="individualCourse">
                     <label for="individual">Precio por hora</label>
                     <input type="text" name="individual" id="individual" />
-                    <button type="submit">Publicar</button>
+                    <div><button type="submit">Publicar</button></div>
                 </form>
             </div>
             <div class="sched-container camb">
-                <h2>Agregar Cursos preparacion examenes</h2>
-                <form id="cambScheduleDB" class="course__sched camb">
-                    <label for="name">Cusrso:</label>
-                    <input type="text" name="name" id="name" />
-                    <label for="date">Fecha:</label>
-                    <input type="text" name="date" id="date" />
-                    <label for="day">Dia:</label>
-                    <input type="text" name="day" id="day" />
-                    <label for="time">Hora:</label>
-                    <input type="text" name="time" id="time" />
-                    <button id="addCamb">Agregar curso</button>
-                    <button id="publishSchedButtonCamb">Publicar cursos</button>
-                </form>
             </div>
         </section>
         <section class="talleres">
@@ -81,7 +74,9 @@
                     <input type="number" name="monthlyPayTalleres" id="monthlyPayTalleres" />
                     <label for="coursePayTalleres">Valor pago cuatrimestral:</label>
                     <input type="number" name="coursePayTalleres" id="coursePayTalleres" />
-                    <button type="submit">Enviar</button>
+                    <div>
+                        <button type="submit">Enviar</button>
+                    </div>
                 </form>
             </div>
             <div class="sched-container">
@@ -95,8 +90,10 @@
                     <input type="text" name="day" id="day" />
                     <label for="time">Hora:</label>
                     <input type="text" name="time" id="time" />
-                    <button id="addTTalleresButton">Agregar curso</button>
-                    <button id="publishTalleresCoursesDB">Publicar cursos</button>
+                    <div>
+                        <button id="addTTalleresButton">Agregar curso</button>
+                        <button id="publishTalleresCoursesDB">Publicar cursos</button>
+                    </div>
                 </form>
             </div>
         </section>
@@ -108,7 +105,9 @@
                     <input type="number" name="monthlyPayexamenes" id="monthlyPayexamenes" />
                     <label for="coursePayexamenes">Valor pago cuatrimestral:</label>
                     <input type="number" name="coursePayexamenes" id="coursePayexamenes" />
-                    <button type="submit">Enviar</button>
+                    <div>
+                        <button type="submit">Enviar</button>
+                    </div>
                 </form>
             </div>
             <div class="sched-container">
@@ -122,16 +121,23 @@
                     <input type="text" name="day" id="day" />
                     <label for="time">Hora:</label>
                     <input type="text" name="time" id="time" />
-                    <button id="addTexamenesButton">Agregar curso</button>
-                    <button id="publishexamenesCoursesDB">Publicar cursos</button>
+                    <div>
+                        <button id="addTexamenesButton">Agregar curso</button>
+                        <button id="publishexamenesCoursesDB">Publicar cursos</button>
+                    </div>
                 </form>
             </div>
         </section>
         <section class="seminarios"></section>
-        <div class="tests" id="tests">
-            <h2>Tests de Nivel</h2>
-            <button type="button" id="getTestsBtn">Ver Tests</button>
-        </div>
+        <secction class="test">
+            <div class="tests" id="tests">
+                <h2>Tests de Nivel</h2>
+                <div>
+                    <button type="button" id="getTestsBtn">Ver Tests</button>
+                </div>
+            </div>
+
+        </secction>
     </main>
     <script type="module" src="../js/assets/login.js"></script>
 </body>

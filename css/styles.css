@@ -1345,7 +1345,44 @@ nav {
 
 .login section {
   display: flex;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 30px;
+  box-shadow: 2px 2px 5px;
+  margin: 30px;
 }
+
+.login article {
+  display: flex;
+}
+
+.login__main input {
+  border-radius: 5px;
+  padding: 1%;
+  outline-color: #ad1a1a;
+
+}
+
+.login__main input:focus-visible {
+  outline-color: #007bff;
+}
+
+.login button {
+  align-self: center;
+  padding: 10px;
+  font-size: 1em;
+  color: #ffffff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 7px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.login button:hover {
+  background-color: #0056b3;
+}
+
 
 .sched-container,
 .sched-container.camb {
@@ -1359,9 +1396,14 @@ nav {
   flex-direction: column;
 }
 
-.login div {
+.course__sched div {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
 
-  padding: 15px;
+.login div {
+  padding: 10px;
 }
 
 /* LOGIN and manage*/

@@ -199,11 +199,9 @@
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: 2fr 9fr 2fr;
   box-shadow: 2px 2px 5px;
-  background-image: linear-gradient(
-    180deg,
-    #e2318a 0% 17%,
-    transparent 15% 100%
-  );
+  background-image: linear-gradient(180deg,
+      #e2318a 0% 17%,
+      transparent 15% 100%);
 }
 
 #pricesCamb {
@@ -325,11 +323,9 @@
 
 .cambridge__card.individuals {
   height: 300px;
-  background-image: linear-gradient(
-    180deg,
-    #40b9b9 0% 20%,
-    transparent 20% 100%
-  );
+  background-image: linear-gradient(180deg,
+      #40b9b9 0% 20%,
+      transparent 20% 100%);
 }
 
 .cambridge__card.individuals h2 {
@@ -695,11 +691,9 @@
   grid-template-columns: repeat(6, 55.83px);
   grid-template-rows: repeat(3, 80px);
   grid-template-areas: "tittle tittle tittle names names names" "specs specs specs specs imgBtn imgBtn" "specs specs specs specs imgBtn imgBtn";
-  background-image: linear-gradient(
-    180deg,
-    #40b9b9 0% 38%,
-    transparent 38% 100%
-  );
+  background-image: linear-gradient(180deg,
+      #40b9b9 0% 38%,
+      transparent 38% 100%);
 }
 
 .card0__tittle,
@@ -1257,21 +1251,15 @@ nav {
   gap: 0;
   border-radius: 20px;
   background-color: #40b9b9;
-  background: -moz-linear-gradient(
-    90deg,
-    rgba(64, 185, 185, 1) 0%,
-    rgba(64, 185, 185, 0.6671043417366946) 100%
-  );
-  background: -webkit-linear-gradient(
-    90deg,
-    rgba(64, 185, 185, 1) 0%,
-    rgba(64, 185, 185, 0.6671043417366946) 100%
-  );
-  background: linear-gradient(
-    90deg,
-    rgba(64, 185, 185, 1) 0%,
-    rgba(64, 185, 185, 0.6671043417366946) 100%
-  );
+  background: -moz-linear-gradient(90deg,
+      rgba(64, 185, 185, 1) 0%,
+      rgba(64, 185, 185, 0.6671043417366946) 100%);
+  background: -webkit-linear-gradient(90deg,
+      rgba(64, 185, 185, 1) 0%,
+      rgba(64, 185, 185, 0.6671043417366946) 100%);
+  background: linear-gradient(90deg,
+      rgba(64, 185, 185, 1) 0%,
+      rgba(64, 185, 185, 0.6671043417366946) 100%);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#40b9b9", endColorstr="#40b9b9", GradientType=1);
 }
 
@@ -1348,6 +1336,17 @@ nav {
 }
 
 /* LOGIN and manage*/
+
+.login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.login section {
+  display: flex;
+}
+
 .sched-container,
 .sched-container.camb {
   margin: 10px;
@@ -1361,7 +1360,7 @@ nav {
 }
 
 .login div {
-  border: 3px dotted red;
+
   padding: 15px;
 }
 
@@ -1375,12 +1374,14 @@ nav {
   align-items: center;
   gap: 10px;
 }
+
 .test-data input {
   width: 80%;
   height: 30px;
   padding: 1%;
   border-radius: 10px;
 }
+
 .test-data label {
   margin: 5px !important;
 }
@@ -1389,6 +1390,7 @@ nav {
   display: flex;
   width: 80%;
 }
+
 .test-data div:nth-of-type(2) input {
   margin-left: 4px;
 }

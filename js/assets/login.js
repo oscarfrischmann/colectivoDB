@@ -69,7 +69,8 @@ if (login && logout) {
       });
   });
 }
-//*Precios de Cursos Generales
+
+//PRECIOS CURSOS DE INGLES GENERAL
 const pricesFormDB = document.getElementById("pricesFormDB");
 async function publishGeneralCoursesPricesDB(e) {
   e.preventDefault();

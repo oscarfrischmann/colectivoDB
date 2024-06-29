@@ -9,6 +9,14 @@ import {
   setDoc,
   deleteDoc,
 } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js";
+import {
+  getAuth,
+  GoogleAuthProvider,
+  signInWithPopup,
+  signOut,
+  onAuthStateChanged,
+} from "https://www.gstatic.com/firebasejs/10.9.0/firebase-auth.js";
+
 const firebaseConfig = {
   apiKey: "AIzaSyAtQccyF0CBM-f9kRhY15B4E7tCpqLCmDs",
   authDomain: "colectivo-de-idiomas.firebaseapp.com",
@@ -20,6 +28,47 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
+//SIGN IN
+const login = document.getElementById("googleLogIn");
+const logout = document.getElementById("googleLogOut");
+
+const provider = new GoogleAuthProvider();
+const auth = getAuth(app);
+let user;
+let prevUser;
+console.log(user);
+onAuthStateChanged(auth, (user) => {
+  if (user != null) {
+    console.log("User Logged In");
+    prevUser = user;
+    console.log(user);
+  } else {
+    console.log("No User Logged In");
+  }
+});
+if (login && logout) {
+  login.addEventListener("click", async () => {
+    signInWithPopup(auth, provider)
+      .then((result) => {
+        user = result.user;
+        console.log(user);
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        console.log(errorCode);
+        console.log(error);
+      });
+  });
+  logout.addEventListener("click", () => {
+    signOut(auth)
+      .then(() => {
+        console.log("Signed Out succesfully");
+      })
+      .catch((error) => {
+        console.log("We couldn´t sign you Out", error);
+      });
+  });
+}
 //*Precios de Cursos Generales
 const pricesFormDB = document.getElementById("pricesFormDB");
 async function publishGeneralCoursesPricesDB(e) {
@@ -390,3 +439,36 @@ async function getTalleresSchedule() {
 }
 
 export const talleresScheduleDB = await getTalleresSchedule();
+
+//TESTS de NIVEL
+
+async function getTests() {
+  try {
+    return await getDocs(collection(db, "tests"));
+  } catch (err) {
+    console.log("Error al traer los tests", err);
+  }
+}
+async function renderTests() {
+  let oneTest = document.createElement("div");
+  const DBtests = await getTests();
+  DBtests.forEach((data) => {
+    const test = data.data();
+    console.log(test);
+    oneTest.innerHTML += `
+    <div>
+    <p>nombre: ${test.nombre}</p> 
+    <p>email: ${test.email}</p> 
+    <p>puntos: ${test.puntos}</p> 
+    </div>
+    `;
+  });
+  tests.appendChild(oneTest);
+}
+const getTestBtn = document.getElementById("getTestsBtn");
+if (getTestBtn) {
+  getTestBtn.addEventListener("click", renderTests);
+}
+
+const tests = document.getElementById("tests");
+if (tests && prevUser) renderTests();

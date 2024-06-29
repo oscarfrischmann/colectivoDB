@@ -1,5 +1,21 @@
 import sweetalert2 from "https://cdn.jsdelivr.net/npm/sweetalert2@11.11.1/+esm";
 import { openWasap } from "../main.js";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js";
+import {
+  getFirestore,
+  addDoc,
+  collection,
+} from "https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js";
+const firebaseConfig = {
+  apiKey: "AIzaSyAtQccyF0CBM-f9kRhY15B4E7tCpqLCmDs",
+  authDomain: "colectivo-de-idiomas.firebaseapp.com",
+  projectId: "colectivo-de-idiomas",
+  storageBucket: "colectivo-de-idiomas.appspot.com",
+  messagingSenderId: "21235746434",
+  appId: "1:21235746434:web:54c3b1e041f3fb0d94169b",
+};
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
 const questions = [
   {
     q: "You _____ twelve years old.",
@@ -386,7 +402,7 @@ for (let q of questions) {
   
   `;
   } else {
-    form.innerHTML += `<button type="submit" id='button'>${q.button}</button>`;
+    form.innerHTML += `<button type="button" id='button'>${q.button}</button>`;
   }
 }
 
@@ -404,11 +420,33 @@ button.addEventListener("click", (e) => {
   }
   const answersJSON = JSON.stringify(answers);
   localStorage.setItem("form", answersJSON);
-  console.log(answers);
 
+  let puntos = 0;
+  answers.forEach((result, i) => {
+    if (result === correctAnswers[i]) puntos += 1;
+  });
+  const name = document.getElementById("name");
+  const email = document.getElementById("email");
+  const test = {
+    puntos: puntos,
+    nombre: name.value,
+    email: email.value,
+  };
+  (async function () {
+    try {
+      const docRef = await addDoc(collection(db, "tests"), test);
+      console.log(docRef.id);
+      console.log(test);
+    } catch (err) {
+      console.log("Hubo un error al enviar el test", err);
+    }
+  })();
   sweetalert2
     .fire({
-      title: "Excelent!",
+      title: `Excelent! ${puntos} respuestas correctas`,
+      imageUrl: "../img/Logo_ECDI-transparente-02-solo-caras.png",
+      imageWidth: "15rem",
+      text: "Ya completaste la parte escrita. Escribinos para completar la nivelación con una entrevista por Zoom",
       showConfirmButton: true,
       showCancelButton: true,
       cancelButtonText: "Tal vez después",
@@ -416,6 +454,8 @@ button.addEventListener("click", (e) => {
     .then((result) => {
       if (result.isConfirmed) {
         openWasap();
+      } else {
+        window.location.href = "../index.html";
       }
     });
 });
@@ -475,3 +515,9 @@ const correctAnswers = [
 
 //*modal al submit:
 //* ya la completaste la parte escrita escribinos para completar la nivelacion con una entrevista por zoom
+
+// let puntos = 0;
+// resultados.forEach((result, i) => {
+//   if (result === prueba[i]) puntos += 1;
+// });
+// console.log(puntos);

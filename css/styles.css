@@ -515,7 +515,8 @@
   margin-bottom: 15px;
 }
 
-.courses__description--list a {
+.courses__description--list a,
+.cambridge__card a {
   color: #40b9b9;
 }
 

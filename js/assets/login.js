@@ -273,28 +273,10 @@ async function publishGeneralCoursesPricesDBtalleres(e) {
 			course: Number(pricesFormDBtalleres['coursePayTalleres'].value),
 		};
 		await setDoc(doc(db, 'prices', 'conversation'), prices);
-		await sweetalert2.fire({
-			title: 'Precios de tallers de conversacion PUBLICADOS!',
-			background: '#93E9BE',
-			toast: true,
-			position: 'top-end',
-			showConfirmButton: false,
-			width: 'fit-content',
-			timer: 3000,
-			timerProgressBar: true,
-		});
+		await sweetAlertSucces('Precios de tallers de conversacion PUBLICADOS!');
 		return prices;
 	} catch (err) {
-		sweetalert2.fire({
-			title: 'ERROR!',
-			background: ' #DB231C',
-			toast: true,
-			position: 'top-end',
-			showConfirmButton: false,
-			width: 'fit-content',
-			timer: 3000,
-			timerProgressBar: true,
-		});
+		sweetAlertError('ERROR!');
 		throw new Error('puclishCoursePricesDBtalleres', err);
 	}
 }
@@ -320,20 +302,22 @@ console.log(pricesDBtalleres);
 const talleresScheduleDataDB2 = { talleresCoursesSchedule: [] };
 const talleresForm = document.getElementById('talleresForm');
 const addTalleresButton = document.getElementById('addTalleresButton');
+console.log(addTalleresButton);
 if (addTalleresButton) {
 	addTalleresButton.addEventListener('click', (e) => {
 		e.preventDefault();
 		const course = {
-			name: talleresForm['name'].value,
-			date: talleresForm['date'].value,
-			day: talleresForm['day'].value,
-			time: talleresForm['time'].value,
+			name: talleresForm['nameTaller'].value,
+			date: talleresForm['dateTaller'].value,
+			day: talleresForm['dayTaller'].value,
+			time: talleresForm['timeTaller'].value,
 		};
-		talleresScheduleDataDB2.coursesSchedule.push(course);
+		console.log(course);
+		talleresScheduleDataDB2.talleresCoursesSchedule.push(course);
 		console.log(talleresScheduleDataDB2);
 		const showTalleres = document.createElement('div');
 		talleresForm.insertAdjacentElement('afterend', showTalleres);
-		talleresScheduleDataDB2.coursesSchedule.forEach((course) => {
+		talleresScheduleDataDB2.talleresCoursesSchedule.forEach((course) => {
 			showTalleres.innerHTML = `
     ${course.name} | ${course.date} | ${course.day} | ${course.time}
       `;
@@ -348,27 +332,9 @@ if (publishTalleresCoursesDB) {
 		e.preventDefault();
 		try {
 			await setDoc(doc(db, 'coursesSchedule', 'talleresSchedule'), talleresScheduleDataDB2);
-			await sweetalert2.fire({
-				title: ' talleres de conversacion PUBLICADOS!',
-				background: '#93E9BE',
-				toast: true,
-				position: 'top-end',
-				showConfirmButton: false,
-				width: 'fit-content',
-				timer: 3000,
-				timerProgressBar: true,
-			});
+			await sweetAlertSucces('talleres de conversacion PUBLICADOS!');
 		} catch (err) {
-			sweetalert2.fire({
-				title: 'ERROR!',
-				background: ' #DB231C',
-				toast: true,
-				position: 'top-end',
-				showConfirmButton: false,
-				width: 'fit-content',
-				timer: 3000,
-				timerProgressBar: true,
-			});
+			sweetAlertError('ERROR!');
 			throw new Error('publish talleres error', err);
 		}
 	});
@@ -386,6 +352,7 @@ async function getTalleresSchedule() {
 }
 
 export const talleresScheduleDB = await getTalleresSchedule();
+console.log(talleresScheduleDB);
 
 //TESTS de NIVEL
 

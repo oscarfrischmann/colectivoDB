@@ -69,35 +69,37 @@
             </article>
         </section>
         <section class="talleres">
-            <div class="pricesDB sched-container">
-                <h2>Precios Talleres de conversación</h2>
-                <form id="pricesFormDBtalleres" class="course__sched">
-                    <label for="monthlyPayTalleres">Valor pago mensual:</label>
-                    <input type="number" name="monthlyPayTalleres" id="monthlyPayTalleres" />
-                    <label for="coursePayTalleres">Valor pago cuatrimestral:</label>
-                    <input type="number" name="coursePayTalleres" id="coursePayTalleres" />
-                    <div>
-                        <button type="submit">Enviar</button>
-                    </div>
-                </form>
-            </div>
-            <div class="sched-container">
-                <h2>Agregar Talleres de Conversacion</h2>
-                <form id="talleresForm" class="course__sched">
-                    <label for="name">Cusrso:</label>
-                    <input type="text" name="name" id="name" />
-                    <label for="date">Fecha:</label>
-                    <input type="text" name="date" id="date" />
-                    <label for="day">Dia:</label>
-                    <input type="text" name="day" id="day" />
-                    <label for="time">Hora:</label>
-                    <input type="text" name="time" id="time" />
-                    <div>
-                        <button id="addTTalleresButton">Agregar curso</button>
-                        <button id="publishTalleresCoursesDB">Publicar cursos</button>
-                    </div>
-                </form>
-            </div>
+            <h2>Talleres de conversación</h2>
+            <article>
+                <div class="pricesDB sched-container">
+                    <form id="pricesFormDBtalleres" class="course__sched">
+                        <label for="monthlyPayTalleres">Valor Mensual:</label>
+                        <input type="text" name="monthlyPayTalleres" id="monthlyPayTalleres" />
+                        <label for="coursePayTalleres">Valor BiMensual:</label>
+                        <input type="text" name="coursePayTalleres" id="coursePayTalleres" />
+                        <div>
+                            <button type="submit">Enviar</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="sched-container">
+                    <form id="talleresForm" class="course__sched">
+                        <label for="nameTaller">Cusrso:</label>
+                        <input type="text" name="nameTaller" id="nameTaller" />
+                        <label for="dateTaller">Fecha:</label>
+                        <input type="text" name="dateTaller" id="dateTaller" />
+                        <label for="dayTaller">Dia:</label>
+                        <input type="text" name="dayTaller" id="dayTaller" />
+                        <label for="timeTaller">Hora:</label>
+                        <input type="text" name="timeTaller" id="timeTaller" />
+                        <div>
+                            <button id="addTalleresButton">Agregar curso</button>
+                            <button id="publishTalleresCoursesDB">Publicar cursos</button>
+                        </div>
+                    </form>
+                </div>
+
+            </article>
         </section>
         <section class="examenes">
             <div class="pricesDB sched-container">

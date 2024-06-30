@@ -28,9 +28,9 @@
                 <div class="pricesDB sched-container">
                     <form id="pricesFormDB" class="course__sched">
                         <label for="monthlyPay">Valor pago mensual:</label>
-                        <input type="number" name="monthlyPay" id="monthlyPay" />
+                        <input type="text" name="monthlyPay" id="monthlyPay" />
                         <label for="coursePay">Valor pago cuatrimestral:</label>
-                        <input type="number" name="coursePay" id="coursePay" />
+                        <input type="text" name="coursePay" id="coursePay" />
                         <div>
                             <button type="submit">Enviar</button>
                         </div>
@@ -55,16 +55,18 @@
             </article>
         </section>
         <section class="individuales">
-            <div class="sched-container">
-                <h2>Precios Clases Individuales</h2>
-                <form id="individualCourse">
-                    <label for="individual">Precio por hora</label>
-                    <input type="text" name="individual" id="individual" />
-                    <div><button type="submit">Publicar</button></div>
-                </form>
-            </div>
-            <div class="sched-container camb">
-            </div>
+            <h2>Precios Clases Individuales</h2>
+            <article>
+                <div class="sched-container">
+                    <form id="individualCourse">
+                        <label for="individual">Precio por hora</label>
+                        <input type="text" name="individual" id="individual" />
+                        <label for="pack8">Precio Pack8</label>
+                        <input type="text" name="pack8" id="pack8" />
+                        <div><button type="submit">Publicar</button></div>
+                    </form>
+                </div>
+            </article>
         </section>
         <section class="talleres">
             <div class="pricesDB sched-container">

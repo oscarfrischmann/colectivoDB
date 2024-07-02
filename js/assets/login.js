@@ -188,9 +188,40 @@ const priceIndDB = async () => {
 };
 
 export const newPriceIndDB = await priceIndDB();
-console.log(newPriceIndDB);
 
 //*CAMBRIDGE
+//prices
+const pricesCamb = document.getElementById('pricesFormDBexamenes');
+if (pricesCamb) {
+	pricesCamb.addEventListener('submit', async (e) => {
+		e.preventDefault();
+		try {
+			const priceCamb = {
+				monthlyCamb: pricesCamb['monthlyCamb'].value,
+				courseCamb: pricesCamb['courseCamb'].value,
+			};
+			await setDoc(doc(db, 'prices', 'cambridgePrice'), priceCamb);
+			sweetAlertSucces('Precio Exámenes Cambridge PUBLICADO!');
+			return priceCamb;
+		} catch (err) {
+			sweetAlertError('ERROR!');
+			throw new Error('exámenes cambridge', err);
+		}
+	});
+}
+const priceCamb = async () => {
+	try {
+		const newCambPRiceDB = doc(db, 'prices', 'cambridgePrice');
+		const newCambPriceSnap = await getDoc(newCambPRiceDB);
+		const newPriceDB = newCambPriceSnap.data();
+		return newPriceDB;
+	} catch (err) {
+		throw new Error('get cambridge price', err);
+	}
+};
+
+export const newPriceCambDB = await priceCamb();
+
 //*test
 const cambScheduleDataDB2 = { cambSchedule: [] };
 const cambForm = document.getElementById('cambScheduleDB');
@@ -199,10 +230,10 @@ if (addCambButton) {
 	addCambButton.addEventListener('click', (e) => {
 		e.preventDefault();
 		const course = {
-			name: cambForm['name'].value,
-			date: cambForm['date'].value,
-			day: cambForm['day'].value,
-			time: cambForm['time'].value,
+			name: cambForm['nameCamb'].value,
+			date: cambForm['dateCamb'].value,
+			day: cambForm['dayCamb'].value,
+			time: cambForm['timeCamb'].value,
 		};
 		cambScheduleDataDB2.cambSchedule.push(course);
 		console.log(cambScheduleDataDB2);
@@ -223,27 +254,9 @@ if (publishSchedButtonCamb) {
 		e.preventDefault();
 		try {
 			await setDoc(doc(db, 'coursesSchedule', 'coursesScheduleCamb'), cambScheduleDataDB2);
-			await sweetalert2.fire({
-				title: ' Cursos Cambridge PUBLICADOS!',
-				background: '#93E9BE',
-				toast: true,
-				position: 'top-end',
-				showConfirmButton: false,
-				width: 'fit-content',
-				timer: 3000,
-				timerProgressBar: true,
-			});
+			await sweetAlertSucces('Cursos Cambridge PUBLICADOS!');
 		} catch (err) {
-			sweetalert2.fire({
-				title: 'ERROR!',
-				background: ' #DB231C',
-				toast: true,
-				position: 'top-end',
-				showConfirmButton: false,
-				width: 'fit-content',
-				timer: 3000,
-				timerProgressBar: true,
-			});
+			sweetAlertError('Error al publicar los cursos Cambridge');
 			throw new Error('publish camb courses', err);
 		}
 	});

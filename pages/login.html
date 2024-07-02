@@ -24,7 +24,6 @@
         <section class="general">
             <h2> Cursos de Ingles General</h2>
             <article>
-
                 <div class="pricesDB sched-container">
                     <form id="pricesFormDB" class="course__sched">
                         <label for="monthlyPay">Valor pago mensual:</label>
@@ -102,35 +101,36 @@
             </article>
         </section>
         <section class="examenes">
-            <div class="pricesDB sched-container">
-                <h2>Precios Exámenes Internaciones</h2>
-                <form id="pricesFormDBexamenes" class="course__sched">
-                    <label for="monthlyPayexamenes">Valor pago mensual:</label>
-                    <input type="number" name="monthlyPayexamenes" id="monthlyPayexamenes" />
-                    <label for="coursePayexamenes">Valor pago cuatrimestral:</label>
-                    <input type="number" name="coursePayexamenes" id="coursePayexamenes" />
-                    <div>
-                        <button type="submit">Enviar</button>
-                    </div>
-                </form>
-            </div>
-            <div class="sched-container">
-                <h2>Agregar examenes Internacionales</h2>
-                <form id="examenesForm" class="course__sched">
-                    <label for="name">Cusrso:</label>
-                    <input type="text" name="name" id="name" />
-                    <label for="date">Fecha:</label>
-                    <input type="text" name="date" id="date" />
-                    <label for="day">Dia:</label>
-                    <input type="text" name="day" id="day" />
-                    <label for="time">Hora:</label>
-                    <input type="text" name="time" id="time" />
-                    <div>
-                        <button id="addTexamenesButton">Agregar curso</button>
-                        <button id="publishexamenesCoursesDB">Publicar cursos</button>
-                    </div>
-                </form>
-            </div>
+            <h2> Preparacion Exámenes Internaciones</h2>
+            <article>
+                <div class="pricesDB sched-container">
+                    <form id="pricesFormDBexamenes" class="course__sched">
+                        <label for="monthlyCamb">Valor pago mensual:</label>
+                        <input type="text" name="monthlyCamb" id="monthlyCamb" />
+                        <label for="courseCamb">Valor pago cuatrimestral:</label>
+                        <input type="text" name="courseCamb" id="courseCamb" />
+                        <div>
+                            <button type="submit">Enviar</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="sched-container">
+                    <form id="examenesForm" class="course__sched">
+                        <label for="nameCamb">Cusrso:</label>
+                        <input type="text" name="nameCamb" id="nameCamb" />
+                        <label for="dateCamb">Fecha:</label>
+                        <input type="text" name="dateCamb" id="dateCamb" />
+                        <label for="dayCamb">Dia:</label>
+                        <input type="text" name="dayCamb" id="dayCamb" />
+                        <label for="timeCamb">Hora:</label>
+                        <input type="text" name="timeCamb" id="timeCamb" />
+                        <div>
+                            <button id="addTexamenesButton">Agregar curso</button>
+                            <button id="publishexamenesCoursesDB">Publicar cursos</button>
+                        </div>
+                    </form>
+                </div>
+            </article>
         </section>
         <section class="seminarios"></section>
         <secction class="test">

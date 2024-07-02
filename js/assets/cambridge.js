@@ -1,19 +1,16 @@
-import * as login from "./login.js";
-import { openWasap } from "../main.js";
+import * as login from './login.js';
+import { openWasap } from '../main.js';
 
-let monthlyCamPay = 14000;
-let courseCambPay = 120000;
-
-const priceCamb = document.getElementById("pricesCamb");
+const priceCamb = document.getElementById('pricesCamb');
 priceCamb.innerHTML = `
 <div class="courses__description--price">
 <h2>Precios</h2>
 	
 	<div class="price-container">
-		<p id="long0"><span>Pago mensual: <span>$ ${monthlyCamPay}</span></p>
+		<p id="long0"><span>Pago mensual: <span>$ ${login.newPriceCambDB.monthlyCamb}</span></p>
 	</div>
 	<div class="price-container">
-		<p id="long0"><span>Pago curso completo:</span> <span>$ ${courseCambPay}</span></p>
+		<p id="long0"><span>Pago curso completo:</span> <span>$ ${login.newPriceCambDB.courseCamb}</span></p>
 	</div>
 	
 	<div class="btn-container">
@@ -24,13 +21,13 @@ priceCamb.innerHTML = `
 </div>
 	`;
 console.log(login.cambScheduleDB2);
-const button = document.getElementById("individualsWasapBtn");
+const button = document.getElementById('individualsWasapBtn');
 if (button) {
-  button.addEventListener("click", () => openWasap());
+	button.addEventListener('click', () => openWasap());
 }
-const schedule = document.getElementById("scheduleCamb");
+const schedule = document.getElementById('scheduleCamb');
 login.cambScheduleDB2.cambSchedule.forEach((courses, i) => {
-  schedule.innerHTML += `
+	schedule.innerHTML += `
 	<div class="price-container">
 	<span class="sc1">${courses.name} </span>
 	<span class="sc2">${courses.date} </span>

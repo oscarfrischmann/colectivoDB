@@ -608,7 +608,9 @@
 #scheduleCamb,
 #schedule-conversation,
 #scheduleTalleres,
-#pricesTalleres {
+#pricesTalleres,
+#pricesSeminarios,
+#scheduleSeminarios {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -627,7 +629,8 @@
 #schedule h2,
 #scheduleCamb h2,
 #schedule-conversation h2,
-#scheduleTalleres h2 {
+#scheduleTalleres h2,
+#scheduleSeminarios h2 {
   font-family: "roboto bold";
   font-size: 2.3rem;
   line-height: 20px;
@@ -638,14 +641,16 @@
 #schedule img,
 #scheduleCamb img,
 #schedule-conversation img,
-#scheduleTalleres img {
+#scheduleTalleres img,
+#scheduleSeminarios img {
   width: 100px;
 }
 
 #schedule .sc1,
 #scheduleCamb .sc1,
 #schedule-conversation .sc1,
-#scheduleTalleres .sc1 {
+#scheduleTalleres .sc1,
+#scheduleSeminarios .sc1 {
   color: #e2318a;
   font-size: 2.3rem;
 }
@@ -653,7 +658,8 @@
 #schedule .sc2,
 #scheduleCamb .sc2,
 #schedule-conversation .sc2,
-#scheduleTalleres .sc2 {
+#scheduleTalleres .sc2,
+#scheduleSeminarios .sc2 {
   font-size: 2rem;
   color: #706f6f;
   text-wrap: nowrap;
@@ -662,14 +668,16 @@
 #schedule .sc3,
 #scheduleCamb .sc3,
 #schedule-conversation .sc3,
-#scheduleTalleres .sc3 {
+#scheduleTalleres .sc3,
+#scheduleSeminarios .sc3 {
   font-size: 1.8rem;
 }
 
 #schedule .price-container,
 #scheduleCamb .price-container,
 #schedule-conversation .price-container,
-#scheduleTalleres .price-container {
+#scheduleTalleres .price-container,
+#scheduleSeminarios .price-container {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -1404,7 +1412,7 @@ nav {
 }
 
 .login div {
-  padding: 10px;
+  padding: 5px;
 }
 
 /* LOGIN and manage*/

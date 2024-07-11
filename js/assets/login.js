@@ -36,7 +36,6 @@ const provider = new GoogleAuthProvider();
 const auth = getAuth(app);
 let user;
 let prevUser;
-console.log(user);
 onAuthStateChanged(auth, (user) => {
   if (user != null) {
     console.log("User Logged In");
@@ -45,7 +44,6 @@ onAuthStateChanged(auth, (user) => {
 
     console.log(user);
   } else {
-    console.log("No User Logged In");
     login.classList.toggle("display-none");
   }
 });
@@ -93,7 +91,6 @@ async function publishGeneralCoursesPricesDB(e) {
 if (pricesFormDB) {
   pricesFormDB.addEventListener("submit", await publishGeneralCoursesPricesDB);
 }
-console.log("Desde LOGIN");
 //GET Precios Cursos generales en página
 async function getPrices() {
   try {
@@ -326,14 +323,12 @@ async function getPricesTalleres() {
 }
 
 export const pricesDBtalleres = await getPricesTalleres();
-console.log(pricesDBtalleres);
 
 //*agregar horarios talleres de conversacion
 
 const talleresScheduleDataDB2 = { talleresCoursesSchedule: [] };
 const talleresForm = document.getElementById("talleresForm");
 const addTalleresButton = document.getElementById("addTalleresButton");
-console.log(addTalleresButton);
 if (addTalleresButton) {
   addTalleresButton.addEventListener("click", (e) => {
     e.preventDefault();
@@ -343,16 +338,13 @@ if (addTalleresButton) {
       day: talleresForm["dayTaller"].value,
       time: talleresForm["timeTaller"].value,
     };
-    console.log(course);
     talleresScheduleDataDB2.talleresCoursesSchedule.push(course);
-    console.log(talleresScheduleDataDB2);
     const showTalleres = document.createElement("div");
     talleresForm.insertAdjacentElement("afterend", showTalleres);
     talleresScheduleDataDB2.talleresCoursesSchedule.forEach((course) => {
       showTalleres.innerHTML = `
     ${course.name} | ${course.date} | ${course.day} | ${course.time}
       `;
-      console.log(course);
     });
   });
 }
@@ -388,7 +380,6 @@ async function getTalleresSchedule() {
 }
 
 export const talleresScheduleDB = await getTalleresSchedule();
-console.log(talleresScheduleDB);
 
 //TESTS de NIVEL
 
@@ -423,6 +414,7 @@ if (getTestBtn) {
 const tests = document.getElementById("tests");
 if (tests && prevUser) renderTests();
 
+//SEMINARIOS
 export const seminario = {
   title: "titulo bla",
   description: ["blabla", "bla", "blablabla", "bla blabla bla"],

@@ -132,7 +132,6 @@
                 </div>
             </article>
         </section>
-        <section class="seminarios"></section>
         <secction class="test">
             <div class="tests" id="tests">
                 <h2>Tests de Nivel</h2>
@@ -140,8 +139,27 @@
                     <button type="button" id="getTestsBtn">Ver Tests</button>
                 </div>
             </div>
-
         </secction>
+        <section class="seminarios login">
+            <h2>Seminarios</h2>
+            <article>
+                <div class="shed-container pricesDB">
+                    <form action="" class="course__sched">
+                        <label for="seminarioTitle">Título</label>
+                        <input type="text" name="seminarioTitle" id="seminarioTitle">
+                        <label for="seminariodescription">Descripción</label>
+                        <textarea cols="30" rows="10" name="seminariodescription" id="seminariodescription"></textarea>
+                        <label for="seminarioTotalPrice">Precio total</label>
+                        <input type="text" name="seminarioTotalPrice" id="seminarioTotalPrice">
+                        <label for="seminario2Price">Opción de pago</label>
+                        <input type="text" name="seminario2Price" id="seminario2Price" placeholder="Nombre">
+                        <label for="seminarioOptionPrice">Precio Opción de pago</label>
+                        <input type="text" name="seminarioOptionPrice" id="seminarioOptionPrice" placeholder="Precio">
+                        <button type="submit">Enviar</button>
+                    </form>
+                </div>
+            </article>
+        </section>
     </main>
     <script type="module" src="../js/assets/login.js"></script>
 </body>

@@ -1547,6 +1547,19 @@ nav {
   background-color: #0056b3;
 }
 
+.seminarios.login {
+  width: 600px;
+}
+
+.seminarios.login button {
+  margin: 5px;
+}
+
+.seminarios.login form {
+  gap: 5px;
+  width: 400px;
+}
+
 @media (min-width: 768px) {
   body {
     max-width: 1200px;

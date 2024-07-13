@@ -11,7 +11,7 @@ if (descriptionCard) {
   descriptionCard.innerHTML = `
         <h2>${seminarioDB.title}</h2>
         <div class="courses__description--tittle">
-          <img src="${seminarioDB.thumbnail}" alt="" />
+          <img src="${seminarioDB.thumbnail}" style="box-shadow: 2px 2px 10px; border-radius: 3px" alt="" />
         </div>
         <p class="seminario-p">${seminarioDB.description}</p>
     `;

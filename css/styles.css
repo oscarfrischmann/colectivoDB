@@ -503,6 +503,12 @@
   align-content: center;
 }
 
+.courses__description--card p {
+  width: 90%;
+  overflow-y: auto;
+  margin-bottom: 10px;
+}
+
 .courses__description--card .btn,
 .courses__description--card .links .link__card a,
 .links .link__card .courses__description--card a {

@@ -16,7 +16,14 @@ import {
   signOut,
   onAuthStateChanged,
 } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-auth.js";
-
+import {
+  getStorage,
+  ref,
+  uploadBytes,
+  listAll,
+  getDownloadURL,
+  deleteObject,
+} from "https://www.gstatic.com/firebasejs/10.9.0/firebase-storage.js";
 const firebaseConfig = {
   apiKey: "AIzaSyAtQccyF0CBM-f9kRhY15B4E7tCpqLCmDs",
   authDomain: "colectivo-de-idiomas.firebaseapp.com",
@@ -25,8 +32,11 @@ const firebaseConfig = {
   messagingSenderId: "21235746434",
   appId: "1:21235746434:web:54c3b1e041f3fb0d94169b",
 };
+
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
+const storage = getStorage();
+const storageRef = ref(storage);
 
 //SIGN IN
 const login = document.getElementById("googleLogIn");
@@ -411,11 +421,129 @@ if (getTestBtn) {
   getTestBtn.addEventListener("click", renderTests);
 }
 
-const tests = document.getElementById("tests");
-if (tests && prevUser) renderTests();
+// const tests = document.getElementById("tests");
+// if (tests && prevUser) renderTests();
 
 //SEMINARIOS
-export const seminario = {
-  title: "titulo bla",
-  description: ["blabla", "bla", "blablabla", "bla blabla bla"],
+
+//UPLOAD IMAGES
+const uploadImages = async (HtMLform, fileInput, DBdirectory) => {
+  const formU = document.getElementById(`${HtMLform}`);
+
+  if (formU) {
+    formU.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const file = document.getElementById(`${fileInput}`).files;
+      for (let i = 0; i < file.length; i++) {
+        const fileRef = ref(storage, `${DBdirectory}/${file[i].name}`);
+        uploadBytes(fileRef, file[i])
+          .then((snapshot) => {})
+          .catch((error) => {
+            console.log("Upload failed:", error);
+          });
+      }
+      alert(`Uploaded for ${DBdirectory}!`);
+    });
+  }
 };
+
+uploadImages("seminarioImgForm", "seminarioImgs", "seminario");
+const imgLinks = [];
+
+const showImages = (DBdirectory, imgsContainer, button, URLinput, form) => {
+  const listRef = ref(storage, `${DBdirectory}`);
+  const HTMLimgsContainer = document.getElementById(`${imgsContainer}`);
+  const showImgsButton = document.getElementById(`${button}`);
+  if (showImgsButton) {
+    showImgsButton.addEventListener("click", async () => {
+      listAll(listRef)
+        .then((res) => {
+          console.log(res.items);
+          res.items.forEach((itemRef) => {
+            getDownloadURL(ref(storage, `${DBdirectory}/${itemRef.name}`))
+              .then((url) => {
+                imgLinks.push(url);
+                HTMLimgsContainer.innerHTML += `
+            <div>
+              <img src=${url} style="width: 200px;" class="mb-3" id=${itemRef.name}>
+							<span>${itemRef.name}</span>
+              <button id="${DBdirectory}-${itemRef.name}" class=" ${DBdirectory}" disabled>Usar</button>
+						</div>
+      `;
+              })
+              .catch((err) => {
+                console.log(err);
+              });
+          });
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+      useImageButtons(DBdirectory, form, URLinput);
+      console.log(imgLinks);
+    });
+  }
+};
+const seminariosForm = document.getElementById("seminarioForm");
+if (seminariosForm) {
+  seminariosForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const seminario = {
+      title: seminariosForm["seminarioTitle"].value,
+      description: seminariosForm["seminariodescription"].value,
+      totalPrice: seminariosForm["seminarioTotalPrice"].value,
+      optionNamePrice: seminariosForm["seminarioNamePrice"].value,
+      optionprice: seminariosForm["seminarioOptionPrice"].value,
+      thumbnail: seminariosForm["seminarioImg"].value,
+      day: seminariosForm["semDay"].value,
+      hour: seminariosForm["semHour"].value,
+    };
+    try {
+      await setDoc(doc(db, "seminarios", "seminario"), seminario);
+      alert("Seminario cargado! OK!");
+    } catch (err) {
+      console.log(err, "set seminario ERROR");
+      alert("set seminario ERROR");
+    }
+  });
+}
+
+showImages(
+  "seminario",
+  "seminarioImgContainer",
+  "showEminarioImages",
+  "seminarioImg",
+  seminariosForm
+);
+async function useImageButtons(DBdirectory, form, URLinput) {
+  setTimeout(() => {
+    const use = document.querySelectorAll(`.${DBdirectory}`);
+    use.forEach((button, i) => {
+      if (button.id.includes(" ")) {
+        button.id = button.id.split(" ").join("");
+      } else {
+        button.id = button.id;
+      }
+      button.removeAttribute("disabled");
+      button.addEventListener("click", (event) => {
+        const img = imgLinks[i];
+        console.log(img);
+        form[URLinput].value = img;
+      });
+    });
+  }, 2500);
+}
+
+//GET SEMINARIO
+async function getSeminario() {
+  try {
+    const seminario = doc(db, "seminarios", "seminario");
+    const seminarioSnapshot = await getDoc(seminario);
+    const seminarioDB = seminarioSnapshot.data();
+    return seminarioDB;
+  } catch (err) {
+    throw new Error("get CoursesShedule", err);
+  }
+}
+
+export const seminarioDB = await getSeminario();

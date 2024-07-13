@@ -507,6 +507,11 @@
   width: 90%;
   overflow-y: auto;
   margin-bottom: 10px;
+  font-size: 1.1rem;
+}
+
+.courses__description--card h2 {
+  margin-top: 10px;
 }
 
 .courses__description--card .btn,

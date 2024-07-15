@@ -42,6 +42,7 @@ const storageRef = ref(storage);
 //SIGN IN
 const login = document.getElementById('googleLogIn');
 const logout = document.getElementById('googleLogOut');
+const main = document.querySelector('.login__main');
 
 const provider = new GoogleAuthProvider();
 const auth = getAuth(app);
@@ -50,12 +51,13 @@ let prevUser;
 onAuthStateChanged(auth, (user) => {
 	if (user != null) {
 		console.log('User Logged In');
+		main.classList.remove('display-none');
+		login.classList.add('display-none');
 		prevUser = user;
-		login.classList.toggle('display-none');
-
 		console.log(user);
 	} else {
-		login.classList.toggle('display-none');
+		console.log('User Logged Out');
+		main.classList.toggle('display-none');
 	}
 });
 if (login && logout) {
@@ -75,6 +77,7 @@ if (login && logout) {
 		signOut(auth)
 			.then(() => {
 				console.log('Signed Out succesfully');
+				login.classList.remove('display-none');
 			})
 			.catch((error) => {
 				console.log('We couldn´t sign you Out', error);

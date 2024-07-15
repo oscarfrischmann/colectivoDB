@@ -485,7 +485,7 @@
 }
 
 .courses__description--tittle img {
-  width: 150px;
+  width: 200px;
 }
 
 .courses__description--card {
@@ -504,7 +504,7 @@
 }
 
 .courses__description--card p {
-  width: 90%;
+  width: 85%;
   overflow-y: auto;
   margin-bottom: 10px;
   font-size: 1.1rem;

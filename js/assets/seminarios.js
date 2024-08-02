@@ -3,9 +3,8 @@ import { openWasap } from "../main.js";
 
 const descriptionCard = document.getElementById("descriptionCardA");
 const semPrices = document.getElementById("pricesSeminarios");
-const schedSem = document.getElementById("scheduleSeminarios");
-
-console.log(seminarioDB);
+const schedSem = document.querySelector("#scheduleSeminarios div");
+console.log(schedSem);
 
 if (descriptionCard) {
   descriptionCard.innerHTML = `
@@ -35,6 +34,14 @@ if (semPrices) {
 	<a class="courses__description--test" href="./test-de-nivel.html">Test de nivel gratuito!</a>
 </div>
 	`;
+  console.log(seminarioDB);
+  if (schedSem) {
+    schedSem.innerHTML = `
+    <p>${seminarioDB.duration}</p>
+    <p>${seminarioDB.day}</p>
+    <p>${seminarioDB.hour}</p>
+    `;
+  }
 
   const button = document.getElementById("semWasapBtn");
   if (button) {

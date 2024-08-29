@@ -37,9 +37,9 @@ if (semPrices) {
   console.log(seminarioDB);
   if (schedSem) {
     schedSem.innerHTML = `
-    <p>${seminarioDB.duration}</p>
-    <p>${seminarioDB.day}</p>
-    <p>${seminarioDB.hour}</p>
+    <p class="sem_duration">${seminarioDB.duration}</p>
+    <p class="sem_day">${seminarioDB.day}</p>
+    <p class="sem_hour">${seminarioDB.hour}</p>
     `;
   }
 

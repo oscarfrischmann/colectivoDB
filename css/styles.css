@@ -1571,6 +1571,25 @@ nav {
   width: 400px;
 }
 
+/* seminarios shedule*/
+.sem_duration {
+  color: #e2318a;
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin: 0 auto;
+}
+
+.sem_day {
+  font-size: 2rem;
+  text-align: center;
+}
+
+.sem_hour {
+  font-size: 2rem;
+  font-weight: 800;
+}
+
+
 @media (min-width: 768px) {
   body {
     max-width: 1200px;

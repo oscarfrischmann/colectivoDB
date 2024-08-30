@@ -485,7 +485,7 @@
 }
 
 .courses__description--tittle img {
-  width: 200px;
+  width: 150px;
 }
 
 .courses__description--card {
@@ -621,7 +621,7 @@
 #scheduleTalleres,
 #pricesTalleres,
 #pricesSeminarios,
-#scheduleSeminarios {
+#scheduleSeminario {
   display: flex;
   flex-direction: column;
   justify-content: center;

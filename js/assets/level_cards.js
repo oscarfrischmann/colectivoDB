@@ -129,7 +129,7 @@ price.innerHTML = `
 	
 		<button class="btn" id="individualsWasapBtn">Escribinos</button>
 	</div>
-	<span class="courses__description--test">Escribinos para solicitar un test de nivel!</span>
+	<span class="courses__description--test"><a href="./test-de-nivel.html">Test de nivel</a></span>
 </div>
 	`;
 console.log(login.courseScheduleDB2);

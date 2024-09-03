@@ -485,7 +485,7 @@
 }
 
 .courses__description--tittle img {
-  width: 150px;
+  width: 200px;
 }
 
 .courses__description--card {
@@ -511,7 +511,8 @@
 }
 
 .courses__description--card h2 {
-  margin-top: 10px;
+  margin: 10px 10px;
+  text-align: center;
 }
 
 .courses__description--card .btn,
@@ -621,7 +622,7 @@
 #scheduleTalleres,
 #pricesTalleres,
 #pricesSeminarios,
-#scheduleSeminario {
+#scheduleSeminarios {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -1587,6 +1588,7 @@ nav {
 .sem_hour {
   font-size: 2rem;
   font-weight: 800;
+  text-align: center;
 }
 
 

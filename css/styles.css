@@ -197,7 +197,7 @@
   display: grid;
   align-items: center;
   grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: 2fr 9fr 2fr;
+  grid-template-rows: 2fr 9fr;
   box-shadow: 2px 2px 5px;
   background-image: linear-gradient(180deg,
       #e2318a 0% 17%,
@@ -223,7 +223,7 @@
   grid-column: 1/3;
   padding: 17px 45px;
   font-family: "segoe";
-  align-self: flex-start;
+  /* align-self: flex-start; */
 }
 
 .cambridge__card img {
@@ -485,7 +485,7 @@
 }
 
 .courses__description--tittle img {
-  width: 200px;
+  width: 150px;
 }
 
 .courses__description--card {
@@ -627,7 +627,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 10px;
+  /* gap: 10px; */
   box-shadow: 2px 2px 5px;
   max-width: 400px;
   width: 335px;
@@ -664,7 +664,7 @@
 #scheduleTalleres .sc1,
 #scheduleSeminarios .sc1 {
   color: #e2318a;
-  font-size: 2.3rem;
+  font-size: 1.5rem;
 }
 
 #schedule .sc2,
@@ -672,7 +672,7 @@
 #schedule-conversation .sc2,
 #scheduleTalleres .sc2,
 #scheduleSeminarios .sc2 {
-  font-size: 2rem;
+  font-size: 1.5rem;
   color: #706f6f;
   text-wrap: nowrap;
 }
@@ -682,7 +682,7 @@
 #schedule-conversation .sc3,
 #scheduleTalleres .sc3,
 #scheduleSeminarios .sc3 {
-  font-size: 1.8rem;
+  font-size: 1.5rem;
 }
 
 #schedule .price-container,

@@ -353,6 +353,7 @@
   align-items: center;
   gap: 20px;
   flex-wrap: wrap;
+  margin-bottom: 10px;
 }
 
 .links .link__card {

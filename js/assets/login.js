@@ -60,7 +60,9 @@ onAuthStateChanged(auth, (user) => {
     console.log(user);
   } else {
     console.log("User Logged Out");
-    main.classList.toggle("display-none");
+    if (main) {
+      main.classList.toggle("display-none");
+    }
   }
 });
 if (login && logout) {

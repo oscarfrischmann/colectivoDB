@@ -17,14 +17,14 @@ const navLinks = [
   "../../index.html",
   "../../index.html#aboutUs",
   "#",
-  "#",
+  "./precios-cursos-de-ingles.html",
   "./enlaces-utiles.html",
 ];
 const navLinksHome = [
   "/index.html",
   "/index.html#aboutUs",
   "#",
-  "#",
+  "/pages/precios-cursos-de-ingles.html",
   "/pages/enlaces-utiles.html",
 ];
 const dropdownContainer = document.getElementById("dropdownContainer");
@@ -78,8 +78,10 @@ coursesDropdown.addEventListener("click", () => {
 
       if (document.querySelector(".tittle__main.general")) {
         link.setAttribute("href", `../../index.html#div${i}`);
+        console.log("if");
       } else {
         link.setAttribute("href", `./index.html#div${i}`);
+        console.log("else");
       }
 
       moreCoursesUL.appendChild(moreCoursesItem);

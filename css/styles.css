@@ -1606,6 +1606,11 @@ th {
   width: 400px;
 }
 
+.preciosDolar.login ul {
+  width: 80%;
+  margin: 15px;
+}
+
 /* seminarios shedule*/
 .sem_duration {
   color: #e2318a;

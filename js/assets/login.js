@@ -591,7 +591,7 @@ if (preciosUSD) {
         } else if (value == "none") {
           preciosDolar[key] = "";
         } else if (value === "0") {
-          preciosDolar[key] = "";
+          preciosDolar[key] = "---";
         } else {
           preciosDolar[key] = value;
         }

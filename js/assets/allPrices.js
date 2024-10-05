@@ -11,28 +11,28 @@ table.innerHTML = `
             </tr>
             <tr>
                 <td>Cursos de Inglés General</td>
-                <td>${login.preciosDolarDB.general} USD</td>
-                <td>$${login.pricesDB.monthly}</td>
+                <td>${login.preciosDolarDB.general}</td>
+                <td>${login.pricesDB.monthly}</td>
             </tr>
             <tr>
                 <td>Preparacion de Exámenes Internacionales</td>
-                <td>${login.preciosDolarDB.cambridge} USD</td>
-                <td>$${login.newPriceCambDB.monthlyCamb}</td>
+                <td>${login.preciosDolarDB.cambridge}</td>
+                <td>${login.newPriceCambDB.monthlyCamb}</td>
             </tr>
             <tr>
                 <td>Seminarios</td>
-                <td>${login.preciosDolarDB.seminario} USD</td>
-                <td>$${login.seminarioDB.totalPrice}</td>
+                <td>${login.preciosDolarDB.seminario}</td>
+                <td>${login.seminarioDB.totalPrice}</td>
             </tr>
             <tr>
                 <td>Taller de Conversación</td>
-                <td>${login.preciosDolarDB.taller} USD</td>
-                <td>$${login.pricesDBtalleres.course}</td>
+                <td>${login.preciosDolarDB.taller}</td>
+                <td>${login.pricesDBtalleres.course}</td>
             </tr>
             <tr>
                 <td>Clases Individuales (Valor hora)</td>
-                <td>${login.preciosDolarDB.ind} USD</td>
-                <td>$${login.newPriceIndDB.priceInd}</td>
+                <td>${login.preciosDolarDB.ind}</td>
+                <td>${login.newPriceIndDB.priceInd}</td>
             </tr>
         </table>
 `;

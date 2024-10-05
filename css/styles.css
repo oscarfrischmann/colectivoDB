@@ -1590,15 +1590,18 @@ th {
   background-color: #0056b3;
 }
 
-.seminarios.login {
+.seminarios.login,
+.preciosDolar {
   width: 600px;
 }
 
-.seminarios.login button {
+.seminarios.login button,
+.preciosDolar button {
   margin: 5px;
 }
 
-.seminarios.login form {
+.seminarios.login form,
+.preciosDolar form {
   gap: 5px;
   width: 400px;
 }

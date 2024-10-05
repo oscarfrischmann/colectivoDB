@@ -569,3 +569,54 @@ async function getSeminario() {
 }
 
 export const seminarioDB = await getSeminario();
+
+// precios DOLAR
+
+const preciosUSD = document.getElementById("dolarForm");
+if (preciosUSD) {
+  preciosUSD.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const preciosDolar = {
+      general: preciosUSD["generalUSD"].value,
+      cambridge: preciosUSD["cambUSD"].value,
+      seminario: preciosUSD["seminariosUSD"].value,
+      taller: preciosUSD["tallerUSD"].value,
+      ind: preciosUSD["indUSD"].value,
+    };
+    console.log(preciosDolar);
+    try {
+      for (let [key, value] of Object.entries(preciosDolar)) {
+        if (value === "") {
+          delete preciosDolar[key];
+        } else if (value == "none") {
+          preciosDolar[key] = "";
+        } else if (value === "0") {
+          preciosDolar[key] = "";
+        } else {
+          preciosDolar[key] = value;
+        }
+      }
+      console.log(preciosDolar);
+      await updateDoc(doc(db, "prices", "dolares"), preciosDolar, {
+        merge: true,
+      });
+      alert("Precios DOLAR OK!!!! cargados");
+    } catch (err) {
+      alert("Precios DOLAR ERROR!!!!!!");
+      console.log(err);
+    }
+  });
+}
+
+async function getPreciosDolar() {
+  try {
+    const preciosDolar = doc(db, "prices", "dolares");
+    const dolarSNAP = await getDoc(preciosDolar);
+    const preciosDolarDB = dolarSNAP.data();
+    return preciosDolarDB;
+  } catch (err) {
+    throw new Error("get preciosDolar", err);
+  }
+}
+
+export const preciosDolarDB = await getPreciosDolar();

@@ -1245,8 +1245,6 @@ nav {
   transform: scale(-1, 1) rotate(30deg);
 }
 
-.prof__container {}
-
 .profesores {
   position: relative;
   display: flex;

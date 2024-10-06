@@ -1245,6 +1245,26 @@ nav {
   transform: scale(-1, 1) rotate(30deg);
 }
 
+.prof__container {}
+
+.profesores {
+  position: relative;
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  scrollbar-width: thin;
+  gap: 5px;
+  width: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 15px;
+}
+
+.profesor {
+  width: 340px;
+  border-radius: 15px;
+}
+
 .footer {
   width: 100%;
   margin: 3em 0 0 0;
@@ -1639,6 +1659,11 @@ th {
 
   nav {
     height: 142px;
+  }
+
+  .profesores {
+    width: 55%;
+    /* transform: translateX(-60%); */
   }
 }
 

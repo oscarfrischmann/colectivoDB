@@ -1385,13 +1385,19 @@ nav {
   width: 100%;
 }
 
+#allPrices #prices {
+  box-shadow: none;
+  margin: 0 auto;
+  padding: 0;
+  width: auto;
+  height: auto;
+}
+
 table {
   width: 90%;
   border-collapse: collapse;
   margin: 0 auto;
 }
-
-
 
 th,
 td {

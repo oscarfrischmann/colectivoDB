@@ -1,7 +1,10 @@
 import * as login from "./login.js";
+import { openWasap } from "../main.js";
 
 const table = document.getElementById("allPrices");
+const promoBtn = document.getElementById("wasap");
 
+promoBtn.addEventListener("click", openWasap);
 table.innerHTML = `
  <table>
             <tr>
@@ -10,12 +13,12 @@ table.innerHTML = `
                 <th>Pesos Argentinos</th>
             </tr>
             <tr>
-                <td>Cursos de Inglés General</td>
+                <td>Cursos de Inglés General (mensual)</td>
                 <td>${login.preciosDolarDB.general}</td>
                 <td>${login.pricesDB.monthly}</td>
             </tr>
             <tr>
-                <td>Preparacion de Exámenes Internacionales</td>
+                <td>Preparacion de Exámenes Internacionales (mensual)</td>
                 <td>${login.preciosDolarDB.cambridge}</td>
                 <td>${login.newPriceCambDB.monthlyCamb}</td>
             </tr>
@@ -25,9 +28,9 @@ table.innerHTML = `
                 <td>${login.seminarioDB.totalPrice}</td>
             </tr>
             <tr>
-                <td>Taller de Conversación</td>
+                <td>Taller de Conversación (mensual)</td>
                 <td>${login.preciosDolarDB.taller}</td>
-                <td>${login.pricesDBtalleres.course}</td>
+                <td>${login.pricesDBtalleres.monthly}</td>
             </tr>
             <tr>
                 <td>Clases Individuales (Valor hora)</td>

@@ -37,3 +37,24 @@ export async function sweetAlertError(error) {
     timerProgressBar: true,
   });
 }
+
+if (document.title === "El colectivo de Idiomas || Aprender inglés online") {
+  sweetalert2
+    .fire({
+      // title: `Excelent! respuestas correctas`,
+      imageUrl: "./img/popUpColectivo.jpg",
+      imageWidth: "75%",
+      // text: "Ya completaste la parte escrita. Escribinos para completar la nivelación con una entrevista por Zoom",
+      showConfirmButton: true,
+      showCancelButton: true,
+      cancelButtonText: "Tal vez después",
+      confirmButtonText: "Quiero!",
+    })
+    .then((result) => {
+      if (result.isConfirmed) {
+        openWasap();
+      } else {
+        // window.location.href = "./index.html";
+      }
+    });
+}

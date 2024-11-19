@@ -1,5 +1,6 @@
 "use strict";
 import sweetalert2 from "https://cdn.jsdelivr.net/npm/sweetalert2@11.11.1/+esm";
+import * as login from "../js/assets/login.js";
 
 export function openWasap() {
   window.open(

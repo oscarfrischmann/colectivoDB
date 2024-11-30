@@ -13,6 +13,7 @@ const firebaseConfig = {
   storageBucket: "colectivo-de-idiomas.appspot.com",
   messagingSenderId: "21235746434",
   appId: "1:21235746434:web:54c3b1e041f3fb0d94169b",
+  measurementId: "G-HDBEWMH17C",
 };
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);

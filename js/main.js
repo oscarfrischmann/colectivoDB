@@ -40,6 +40,7 @@ export async function sweetAlertError(error) {
 }
 
 if (document.title === "El colectivo de Idiomas || Aprender inglés online") {
+  console.log("Hola");
   sweetalert2
     .fire({
       // title: `Excelent! respuestas correctas`,
@@ -49,11 +50,13 @@ if (document.title === "El colectivo de Idiomas || Aprender inglés online") {
       showConfirmButton: true,
       showCancelButton: true,
       cancelButtonText: "Tal vez después",
-      confirmButtonText: "Quiero!",
+      confirmButtonText: "Ver horarios",
     })
     .then((result) => {
       if (result.isConfirmed) {
-        openWasap();
+        window.location.replace(
+          "https://elcolectivodeidiomas.com/pages/cursos-ingles-general.html"
+        );
       } else {
         // window.location.href = "./index.html";
       }

@@ -1614,6 +1614,16 @@ th {
   background-color: #0056b3;
 }
 
+.deleteTestButton button {
+  background-color: red;
+  padding: 6px;
+  font-weight: 900;
+}
+
+.deleteTestButton button:hover {
+  background-color: #89183a;
+}
+
 .seminarios.login,
 .preciosDolar {
   width: 600px;

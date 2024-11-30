@@ -51,20 +51,22 @@ const provider = new GoogleAuthProvider();
 const auth = getAuth(app);
 let user;
 let prevUser;
-onAuthStateChanged(auth, (user) => {
-  if (user != null) {
-    console.log("User Logged In");
-    main.classList.remove("display-none");
-    login.classList.add("display-none");
-    prevUser = user;
-    console.log(user);
-  } else {
-    console.log("User Logged Out");
-    if (main) {
-      main.classList.toggle("display-none");
+if (login && main) {
+  onAuthStateChanged(auth, (user) => {
+    if (user != null) {
+      console.log("User Logged In");
+      main.classList.remove("display-none");
+      login.classList.add("display-none");
+      prevUser = user;
+      console.log(user);
+    } else {
+      console.log("User Logged Out");
+      if (main) {
+        main.classList.toggle("display-none");
+      }
     }
-  }
-});
+  });
+}
 if (login && logout) {
   login.addEventListener("click", async () => {
     signInWithPopup(auth, provider)
@@ -414,16 +416,32 @@ async function renderTests() {
   const DBtests = await getTests();
   DBtests.forEach((data) => {
     const test = data.data();
-    console.log(test);
+    console.log(data.id);
     oneTest.innerHTML += `
-    <div>
+    <div class="deleteTestButton" id="${data.id}">
     <p>nombre: ${test.nombre}</p> 
-    <p>email: ${test.email}</p> 
+    <span>email: </span><a href="mailto:${test.email}"> ${test.email}</a> 
     <p>puntos: ${test.puntos}</p> 
+    <button data-id="${data.id}" class="delete_button">X</button>
     </div>
     `;
   });
-  tests.appendChild(oneTest);
+  await tests.appendChild(oneTest);
+  // Delete Test by one
+  const deleteButtons = document.querySelectorAll(".deleteTestButton button");
+  console.log(deleteButtons);
+  console.log(oneTest);
+  for (let btn of deleteButtons) {
+    btn.addEventListener("click", async ({ target: { dataset } }) => {
+      console.log(dataset);
+      await deleteDoc(doc(db, "tests", dataset.id));
+      for (const child of oneTest.children) {
+        if (child.id === dataset.id) {
+          child.style.display = "none";
+        } // Logs the id of each child (e.g., "data.id")
+      }
+    });
+  }
 }
 const getTestBtn = document.getElementById("getTestsBtn");
 if (getTestBtn) {

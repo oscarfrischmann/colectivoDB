@@ -248,6 +248,20 @@ if (publishCoursesDescriptionBtn) {
     }
   });
 }
+
+async function getCoursesDescription() {
+  try {
+    const coursesDescriptionCall = await getDoc(
+      doc(db, "courses", "description")
+    );
+    const coursesDescription = await coursesDescriptionCall.data();
+    return coursesDescription;
+  } catch (error) {
+    console.log(error, "Error leyendo db en descripcion de cursos");
+  }
+}
+export const coursesDescription = await getCoursesDescription();
+
 //*Clases INDIVIDUALES
 const individualCourseForm = document.getElementById("individualCourse");
 if (individualCourseForm) {

@@ -76,3 +76,15 @@ const button = document.getElementById("individualsWasapBtn");
 if (button) {
   button.addEventListener("click", () => openWasap());
 }
+
+const coursesDescriptionCard = document.querySelector("#descriptionCardA ul");
+console.log(coursesDescriptionCard);
+
+if (coursesDescriptionCard) {
+  coursesDescriptionCard.innerHTML = "";
+  login.coursesDescription.description.forEach((text) => {
+    const li = document.createElement("li");
+    li.textContent = text.li;
+    coursesDescriptionCard.appendChild(li);
+  });
+}

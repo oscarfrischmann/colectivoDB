@@ -15,7 +15,7 @@ table.innerHTML = `
             <tr>
                 <td>Cursos de Inglés General (mensual)</td>
                 <td>${login.preciosDolarDB.general}</td>
-                <td>${login.pricesDB.monthly}</td>
+                <td>${login.getNewGeneralPricesDB.valueOne}</td>
             </tr>
             <tr>
                 <td>Preparacion de Exámenes Internacionales (mensual)</td>

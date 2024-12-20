@@ -91,39 +91,52 @@ if (login && logout) {
       });
   });
 }
+// newPricesFormDB (nuevo precios cursos de ingles general)
 
-//PRECIOS CURSOS DE INGLES GENERAL
-const pricesFormDB = document.getElementById("pricesFormDB");
-async function publishGeneralCoursesPricesDB(e) {
-  e.preventDefault();
-  try {
-    const prices = {
-      monthly: pricesFormDB["monthlyPay"].value,
-      course: pricesFormDB["coursePay"].value,
+const generalCoursesData = document.getElementById("newPricesFormDB");
+if (generalCoursesData) {
+  generalCoursesData.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const generalCoursesDataForm = {
+      typeOne: generalCoursesData["payTypeOne"].value,
+      valueOne: generalCoursesData["payValueOne"].value,
+      typeTwo: generalCoursesData["payTypeTwo"].value,
+      valueTwo: generalCoursesData["payValueTwo"].value,
     };
-    await setDoc(doc(db, "prices", "generalCourses"), prices);
-    await sweetAlertSucces("Precios de Cursos generales PUBLICADOS!");
-    return prices;
-  } catch (err) {
-    sweetAlertError("Error!");
-    throw new Error("puclishCoursePricesDB", err);
-  }
+    try {
+      for (let [key, value] of Object.entries(generalCoursesDataForm)) {
+        if (value === "") {
+          delete generalCoursesDataForm[key];
+        } else if (value == "none") {
+          generalCoursesDataForm[key] = "";
+        } else {
+          generalCoursesDataForm[key] = value;
+        }
+      }
+      console.log(generalCoursesDataForm);
+
+      await setDoc(doc(db, "blob", "preciosBlob"), generalCoursesDataForm, {
+        merge: true,
+      });
+      alert("newprices OK");
+    } catch (error) {
+      console.log(error, "New price NOT good");
+    }
+  });
 }
-if (pricesFormDB) {
-  pricesFormDB.addEventListener("submit", await publishGeneralCoursesPricesDB);
-}
-//GET Precios Cursos generales en página
-async function getPrices() {
+
+async function getNewGeneralPrices() {
   try {
-    const pricesCol = doc(db, "prices", "generalCourses");
-    const pricesSnapshot = await getDoc(pricesCol);
-    const pricesList = pricesSnapshot.data();
-    return pricesList;
-  } catch (err) {
-    throw new Error("get Docs", err);
+    const newPrices = doc(db, "blob", "preciosBlob");
+    const newPricesSnapshot = await getDoc(newPrices);
+    const newPricesDB = newPricesSnapshot.data();
+    return newPricesDB;
+  } catch (error) {
+    sweetAlertError("Error!");
+    console.log(error);
   }
 }
-export const pricesDB = await getPrices();
+export const getNewGeneralPricesDB = await getNewGeneralPrices();
 
 //AGREGAR CURSOS DE INGLES GENERAL
 const coursesScheduleDataDB2 = { coursesSchedule: [] };
@@ -180,6 +193,61 @@ async function getCoursesSchedule() {
 }
 export const courseScheduleDB2 = await getCoursesSchedule();
 
+//descripcion Cursos de inglés general.
+const descriptionGeneralCoursesData = { description: [] };
+const descriptionGeneralCourses = document.getElementById(
+  "descriptionGeneralCoursesFORM"
+);
+const addCoursesDataBtn = document.getElementById("addText");
+
+if (addCoursesDataBtn) {
+  addCoursesDataBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+
+    const descriptionData = {
+      li: descriptionGeneralCourses["text"].value,
+    };
+
+    // Add new description to the array
+    descriptionGeneralCoursesData.description.push(descriptionData);
+
+    // Clear the content of the showDescription div
+    let showDescription = document.getElementById("showDescription");
+    if (!showDescription) {
+      showDescription = document.createElement("div");
+      showDescription.id = "showDescription";
+      descriptionGeneralCourses.insertAdjacentElement(
+        "afterend",
+        showDescription
+      );
+    }
+    showDescription.innerHTML = ""; // Clear old content
+
+    // Display all items in the array in order
+    for (let i = 0; i < descriptionGeneralCoursesData.description.length; i++) {
+      const item = document.createElement("p");
+      item.textContent = descriptionGeneralCoursesData.description[i].li;
+      showDescription.appendChild(item);
+    }
+  });
+}
+const publishCoursesDescriptionBtn = document.getElementById(
+  "publishDescriptionButton"
+);
+if (publishCoursesDescriptionBtn) {
+  publishCoursesDescriptionBtn.addEventListener("click", async (e) => {
+    e.preventDefault();
+    try {
+      await setDoc(
+        doc(db, "courses", "description"),
+        descriptionGeneralCoursesData
+      );
+      await sweetAlertSucces("Descripcion de cursas publicada");
+    } catch (error) {
+      sweetAlertError("ERROR!");
+    }
+  });
+}
 //*Clases INDIVIDUALES
 const individualCourseForm = document.getElementById("individualCourse");
 if (individualCourseForm) {

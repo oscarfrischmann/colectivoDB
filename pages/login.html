@@ -26,11 +26,15 @@
             <h2> Cursos de Ingles General</h2>
             <article>
                 <div class="pricesDB sched-container">
-                    <form id="pricesFormDB" class="course__sched">
-                        <label for="monthlyPay">Valor pago mensual:</label>
-                        <input type="text" name="monthlyPay" id="monthlyPay" />
-                        <label for="coursePay">Valor pago cuatrimestral:</label>
-                        <input type="text" name="coursePay" id="coursePay" />
+                    <form id="newPricesFormDB" class="course__sched">
+                        <label for="payTypeOne">Tipo de pago 1</label>
+                        <input type="text" name="payTypeOne" id="typeOne" />
+                        <label for="payValueOne">Valor pago 1</label>
+                        <input type="text" name="payValueOne" id="valueOne" />
+                        <label for="payTypeTwo">Tipo de pago 2</label>
+                        <input type="text" name="payTypeTwo" id="typetwo" />
+                        <label for="payValueOne">Valor pago 2</label>
+                        <input type="text" name="payValueTwo" id="valuetwo" />
                         <div>
                             <button type="submit">Enviar</button>
                         </div>
@@ -49,6 +53,16 @@
                         <div>
                             <button id="add">Agregar curso</button>
                             <button id="publishSchedButton">Publicar cursos</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="sched-container">
+                    <form id="descriptionGeneralCoursesFORM" class="course__sched">
+                        <label for="text">Texto:</label>
+                        <textarea type="text" name="text" id="text" rows="2" cols="36"></textarea>
+                        <div>
+                            <button id="addText">Agregar texto</button>
+                            <button id="publishDescriptionButton">Publicar descripción</button>
                         </div>
                     </form>
                 </div>

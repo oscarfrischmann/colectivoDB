@@ -435,7 +435,6 @@ button.addEventListener("click", (e) => {
     try {
       const docRef = await addDoc(collection(db, "tests"), test);
       console.log(docRef.id);
-      console.log(test);
     } catch (err) {
       console.log("Hubo un error al enviar el test", err);
     }

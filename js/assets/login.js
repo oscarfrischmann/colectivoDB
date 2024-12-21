@@ -54,13 +54,12 @@ let prevUser;
 if (login && main) {
   onAuthStateChanged(auth, (user) => {
     if (user != null) {
-      console.log("User Logged In");
+      console.log(`User ${user.displayName} Logged In`);
       main.classList.remove("display-none");
       login.classList.add("display-none");
       prevUser = user;
-      console.log(user);
     } else {
-      console.log("User Logged Out");
+      console.log(`User ${user.displayName} Logged Out`);
       if (main) {
         main.classList.toggle("display-none");
       }
@@ -87,7 +86,7 @@ if (login && logout) {
         login.classList.remove("display-none");
       })
       .catch((error) => {
-        console.log("We couldn´t sign you Out", error);
+        sweetAlertError("We couldn´t sign you Out", error);
       });
   });
 }
@@ -113,7 +112,6 @@ if (generalCoursesData) {
           generalCoursesDataForm[key] = value;
         }
       }
-      console.log(generalCoursesDataForm);
 
       await setDoc(doc(db, "blob", "preciosBlob"), generalCoursesDataForm, {
         merge: true,
@@ -136,7 +134,6 @@ export async function getNewGeneralPrices() {
     console.log(error);
   }
 }
-// export const getNewGeneralPricesDB = await getNewGeneralPrices();
 
 //AGREGAR CURSOS DE INGLES GENERAL
 const coursesScheduleDataDB2 = { coursesSchedule: [] };
@@ -152,14 +149,12 @@ if (addButton) {
       time: coursesForm["time"].value,
     };
     coursesScheduleDataDB2.coursesSchedule.push(course);
-    console.log(coursesScheduleDataDB2);
     const showCourses = document.createElement("div");
     coursesForm.insertAdjacentElement("afterend", showCourses);
     coursesScheduleDataDB2.coursesSchedule.forEach((course) => {
       showCourses.innerHTML = `
     ${course.name} | ${course.date} | ${course.day} | ${course.time}
       `;
-      console.log(course);
     });
   });
 }
@@ -342,14 +337,12 @@ if (addCambButton) {
       time: cambForm["timeCamb"].value,
     };
     cambScheduleDataDB2.cambSchedule.push(course);
-    console.log(cambScheduleDataDB2);
     const showcamb = document.createElement("span");
     cambForm.insertAdjacentElement("afterend", showcamb);
     cambScheduleDataDB2.cambSchedule.forEach((course) => {
       showcamb.innerHTML = `
     ${course.name} | ${course.date} | ${course.day} | ${course.time}
       `;
-      console.log(course);
     });
   });
 }
@@ -486,7 +479,7 @@ async function getTests() {
   try {
     return await getDocs(collection(db, "tests"));
   } catch (err) {
-    console.log("Error al traer los tests", err);
+    sweetAlertError("Error al traer los tests");
   }
 }
 async function renderTests() {
@@ -494,7 +487,6 @@ async function renderTests() {
   const DBtests = await getTests();
   DBtests.forEach((data) => {
     const test = data.data();
-    console.log(data.id);
     oneTest.innerHTML += `
     <div class="deleteTestButton" id="${data.id}">
     <p>nombre: ${test.nombre}</p> 
@@ -507,11 +499,8 @@ async function renderTests() {
   await tests.appendChild(oneTest);
   // Delete Test by one
   const deleteButtons = document.querySelectorAll(".deleteTestButton button");
-  console.log(deleteButtons);
-  console.log(oneTest);
   for (let btn of deleteButtons) {
     btn.addEventListener("click", async ({ target: { dataset } }) => {
-      console.log(dataset);
       await deleteDoc(doc(db, "tests", dataset.id));
       for (const child of oneTest.children) {
         if (child.id === dataset.id) {
@@ -563,7 +552,6 @@ const showImages = (DBdirectory, imgsContainer, button, URLinput, form) => {
     showImgsButton.addEventListener("click", async () => {
       listAll(listRef)
         .then((res) => {
-          console.log(res.items);
           res.items.forEach((itemRef) => {
             getDownloadURL(ref(storage, `${DBdirectory}/${itemRef.name}`))
               .then((url) => {
@@ -614,7 +602,6 @@ if (seminariosForm) {
           seminario[key] = value;
         }
       }
-      console.log(seminario);
       await updateDoc(doc(db, "seminarios", "seminario"), seminario, {
         merge: true,
       });
@@ -645,7 +632,6 @@ async function useImageButtons(DBdirectory, form, URLinput) {
       button.removeAttribute("disabled");
       button.addEventListener("click", (event) => {
         const img = imgLinks[i];
-        console.log(img);
         form[URLinput].value = img;
       });
     });
@@ -679,7 +665,6 @@ if (preciosUSD) {
       taller: preciosUSD["tallerUSD"].value,
       ind: preciosUSD["indUSD"].value,
     };
-    console.log(preciosDolar);
     try {
       for (let [key, value] of Object.entries(preciosDolar)) {
         if (value === "") {
@@ -692,7 +677,6 @@ if (preciosUSD) {
           preciosDolar[key] = value;
         }
       }
-      console.log(preciosDolar);
       await updateDoc(doc(db, "prices", "dolares"), preciosDolar, {
         merge: true,
       });

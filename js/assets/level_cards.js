@@ -36,13 +36,10 @@ coursesArr.push(
 coursesArr.push(new Level("nivel", "intermedio", "b1/b2", descriptionsInter));
 coursesArr.push(new Level("nivel", "avanzado", "c1/c2", descriptionsAdv));
 
-console.log(coursesArr);
-
 const cardContainer = document.getElementById("cardContainer");
-// const price1 = login.getNewGeneralPricesDB.valueOne;
-// console.log(price1);
 const price = document.getElementById("prices");
 const getNewGeneralPricesDB = await login.getNewGeneralPrices();
+
 price.innerHTML = `
 <div class="courses__description--price">
 <h2>Precios</h2>
@@ -78,7 +75,6 @@ if (button) {
 }
 
 const coursesDescriptionCard = document.querySelector("#descriptionCardA ul");
-console.log(coursesDescriptionCard);
 const coursesDescription = await login.getCoursesDescription();
 if (coursesDescriptionCard) {
   coursesDescriptionCard.innerHTML = "";

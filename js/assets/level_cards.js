@@ -1,7 +1,6 @@
 import { openWasap } from "../main.js";
 import * as login from "./login.js";
 
-console.log(login.getNewGeneralPricesDB);
 const coursesArr = [];
 const descriptionsBeguiner = [
   "Aprendé Inglés desde cero.",
@@ -40,18 +39,19 @@ coursesArr.push(new Level("nivel", "avanzado", "c1/c2", descriptionsAdv));
 console.log(coursesArr);
 
 const cardContainer = document.getElementById("cardContainer");
-const price1 = login.getNewGeneralPricesDB.valueOne;
-console.log(price1);
+// const price1 = login.getNewGeneralPricesDB.valueOne;
+// console.log(price1);
 const price = document.getElementById("prices");
+const getNewGeneralPricesDB = await login.getNewGeneralPrices();
 price.innerHTML = `
 <div class="courses__description--price">
 <h2>Precios</h2>
 	
 	<div class="price-container">
-		<p id="long0"><span>${login.getNewGeneralPricesDB.typeOne}:</span> <span> ${login.getNewGeneralPricesDB.valueOne}</span></p>
+		<p id="long0"><span>${getNewGeneralPricesDB.typeOne}:</span> <span> ${getNewGeneralPricesDB.valueOne}</span></p>
 	</div>
 	<div class="price-container">
-		<p id="long0"><span>${login.getNewGeneralPricesDB.typeTwo}:</span> <span>${login.getNewGeneralPricesDB.valueTwo}</span></p>
+		<p id="long0"><span>${getNewGeneralPricesDB.typeTwo}:</span> <span>${getNewGeneralPricesDB.valueTwo}</span></p>
 	</div>
 	
 	<div class="btn-container">
@@ -61,9 +61,9 @@ price.innerHTML = `
 	<span class="courses__description--test"><a href="./test-de-nivel.html">Test de nivel</a></span>
 </div>
 	`;
-console.log(login.courseScheduleDB2);
+const courseScheduleDB2 = await login.getCoursesSchedule();
 const schedule = document.getElementById("coursesSchedule");
-login.courseScheduleDB2.coursesSchedule.forEach((courses, i) => {
+courseScheduleDB2.coursesSchedule.forEach((courses, i) => {
   schedule.innerHTML += `
 	<div class="price-container">
 	<span class="sc1">${courses.name} </span>
@@ -79,10 +79,10 @@ if (button) {
 
 const coursesDescriptionCard = document.querySelector("#descriptionCardA ul");
 console.log(coursesDescriptionCard);
-
+const coursesDescription = await login.getCoursesDescription();
 if (coursesDescriptionCard) {
   coursesDescriptionCard.innerHTML = "";
-  login.coursesDescription.description.forEach((text) => {
+  coursesDescription.description.forEach((text) => {
     const li = document.createElement("li");
     li.textContent = text.li;
     coursesDescriptionCard.appendChild(li);

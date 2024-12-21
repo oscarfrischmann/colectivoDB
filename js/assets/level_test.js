@@ -399,8 +399,6 @@ for (let q of questions) {
       <input type="radio" name="q${index}" value="0" checked> I don't know
     </label>
   </div>
-
-  
   `;
   } else {
     form.innerHTML += `<button type="button" id='button'>${q.button}</button>`;
@@ -513,12 +511,3 @@ const correctAnswers = [
   "D",
   "C",
 ];
-
-//*modal al submit:
-//* ya la completaste la parte escrita escribinos para completar la nivelacion con una entrevista por zoom
-
-// let puntos = 0;
-// resultados.forEach((result, i) => {
-//   if (result === prueba[i]) puntos += 1;
-// });
-// console.log(puntos);

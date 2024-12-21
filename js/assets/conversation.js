@@ -1,18 +1,17 @@
-import * as login from './login.js';
-import { openWasap } from '../main.js';
-const monthlyPayTalleres = login.pricesDBtalleres.monthly;
-const biMonthlyPayTalleres = login.pricesDBtalleres.course;
+import * as login from "./login.js";
+import { openWasap } from "../main.js";
 
-const price = document.getElementById('pricesTalleres');
+const conversationPrices = await login.getPricesTalleres();
+const price = document.getElementById("pricesTalleres");
 price.innerHTML = `
 <div class="courses__description--price">
 <h2>Precios</h2>
 	
 	<div class="price-container">
-		<p id="long0"><span>Pago mensual: <span>$ ${monthlyPayTalleres}</span></p>
+		<p id="long0"><span>Pago mensual: <span>$ ${conversationPrices.monthly}</span></p>
 	</div>
 	<div class="price-container">
-		<p id="long0"><span>Pago bimensual:</span> <span>$ ${biMonthlyPayTalleres}</span></p>
+		<p id="long0"><span>Pago bimensual:</span> <span>$ ${conversationPrices.course}</span></p>
 	</div>
 	
 	<div class="btn-container">
@@ -23,13 +22,14 @@ price.innerHTML = `
 </div>
 	`;
 
-const button = document.getElementById('individualsWasapBtn');
+const talleresSchedule = await login.getTalleresSchedule();
+const button = document.getElementById("individualsWasapBtn");
 if (button) {
-	button.addEventListener('click', () => openWasap());
+  button.addEventListener("click", () => openWasap());
 }
-const schedule = document.getElementById('coursesSchedule');
-login.talleresScheduleDB.talleresCoursesSchedule.forEach((courses, i) => {
-	schedule.innerHTML += `
+const schedule = document.getElementById("coursesSchedule");
+talleresSchedule.talleresCoursesSchedule.forEach((courses, i) => {
+  schedule.innerHTML += `
 	<div class="price-container">
 	<span class="sc1">${courses.name} </span>
 	<span class="sc2">${courses.date} </span>

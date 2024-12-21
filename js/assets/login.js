@@ -125,7 +125,7 @@ if (generalCoursesData) {
   });
 }
 
-async function getNewGeneralPrices() {
+export async function getNewGeneralPrices() {
   try {
     const newPrices = doc(db, "blob", "preciosBlob");
     const newPricesSnapshot = await getDoc(newPrices);
@@ -136,7 +136,7 @@ async function getNewGeneralPrices() {
     console.log(error);
   }
 }
-export const getNewGeneralPricesDB = await getNewGeneralPrices();
+// export const getNewGeneralPricesDB = await getNewGeneralPrices();
 
 //AGREGAR CURSOS DE INGLES GENERAL
 const coursesScheduleDataDB2 = { coursesSchedule: [] };
@@ -181,7 +181,7 @@ if (publishSchedButton) {
   });
 }
 
-async function getCoursesSchedule() {
+export async function getCoursesSchedule() {
   try {
     const courseSshedulesCol = doc(db, "coursesSchedule", "coursesSchedule");
     const courseSshedulesSnapshot = await getDoc(courseSshedulesCol);
@@ -191,7 +191,7 @@ async function getCoursesSchedule() {
     throw new Error("get CoursesShedule", err);
   }
 }
-export const courseScheduleDB2 = await getCoursesSchedule();
+// export const courseScheduleDB2 = await getCoursesSchedule();
 
 //descripcion Cursos de inglés general.
 const descriptionGeneralCoursesData = { description: [] };
@@ -249,7 +249,7 @@ if (publishCoursesDescriptionBtn) {
   });
 }
 
-async function getCoursesDescription() {
+export async function getCoursesDescription() {
   try {
     const coursesDescriptionCall = await getDoc(
       doc(db, "courses", "description")
@@ -260,7 +260,7 @@ async function getCoursesDescription() {
     console.log(error, "Error leyendo db en descripcion de cursos");
   }
 }
-export const coursesDescription = await getCoursesDescription();
+// export const coursesDescription = await getCoursesDescription();
 
 //*Clases INDIVIDUALES
 const individualCourseForm = document.getElementById("individualCourse");
@@ -282,7 +282,7 @@ if (individualCourseForm) {
   });
 }
 
-const priceIndDB = async () => {
+export const priceIndDB = async () => {
   try {
     const newIndPriceDB = doc(db, "prices", "individualPrice");
     const newIndPriceSnap = await getDoc(newIndPriceDB);
@@ -293,7 +293,7 @@ const priceIndDB = async () => {
   }
 };
 
-export const newPriceIndDB = await priceIndDB();
+// export const newPriceIndDB = await priceIndDB();
 
 //*CAMBRIDGE
 //prices
@@ -315,7 +315,7 @@ if (pricesCamb) {
     }
   });
 }
-const priceCamb = async () => {
+export const priceCamb = async () => {
   try {
     const newCambPRiceDB = doc(db, "prices", "cambridgePrice");
     const newCambPriceSnap = await getDoc(newCambPRiceDB);
@@ -326,7 +326,7 @@ const priceCamb = async () => {
   }
 };
 
-export const newPriceCambDB = await priceCamb();
+// export const newPriceCambDB = await priceCamb();
 
 //*test
 const cambScheduleDataDB2 = { cambSchedule: [] };
@@ -373,7 +373,7 @@ if (publishSchedButtonCamb) {
   });
 }
 
-async function getCambSchedule() {
+export async function getCambSchedule() {
   try {
     const courseSshedulesCol = doc(
       db,
@@ -389,7 +389,7 @@ async function getCambSchedule() {
   }
 }
 
-export const cambScheduleDB2 = await getCambSchedule();
+// export const cambScheduleDB2 = await getCambSchedule();
 
 //*talleres conversation
 const pricesFormDBtalleres = document.getElementById("pricesFormDBtalleres");
@@ -414,7 +414,7 @@ if (pricesFormDBtalleres) {
     await publishGeneralCoursesPricesDBtalleres
   );
 }
-async function getPricesTalleres() {
+export async function getPricesTalleres() {
   try {
     const pricesTalleres = doc(db, "prices", "conversation");
     const pricesSnapshot = await getDoc(pricesTalleres);
@@ -424,8 +424,6 @@ async function getPricesTalleres() {
     throw new Error("get Docs", err);
   }
 }
-
-export const pricesDBtalleres = await getPricesTalleres();
 
 //*agregar horarios talleres de conversacion
 
@@ -471,7 +469,7 @@ if (publishTalleresCoursesDB) {
   });
 }
 
-async function getTalleresSchedule() {
+export async function getTalleresSchedule() {
   try {
     const courseSshedulesCol = doc(db, "coursesSchedule", "talleresSchedule");
     const courseSshedulesSnapshot = await getDoc(courseSshedulesCol);
@@ -481,8 +479,6 @@ async function getTalleresSchedule() {
     throw new Error("get CoursesShedule", err);
   }
 }
-
-export const talleresScheduleDB = await getTalleresSchedule();
 
 //TESTS de NIVEL
 
@@ -657,7 +653,7 @@ async function useImageButtons(DBdirectory, form, URLinput) {
 }
 
 //GET SEMINARIO
-async function getSeminario() {
+export async function getSeminario() {
   try {
     const seminario = doc(db, "seminarios", "seminario");
     const seminarioSnapshot = await getDoc(seminario);
@@ -668,7 +664,7 @@ async function getSeminario() {
   }
 }
 
-export const seminarioDB = await getSeminario();
+//  const seminarioDB = await getSeminario();
 
 // precios DOLAR
 

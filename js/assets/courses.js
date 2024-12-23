@@ -71,12 +71,20 @@ const cardClasses = {
   container: "courses__card-container",
   header: "courses__card-header",
 };
-
+const AOS = [
+  "fade-right",
+  "flip-down",
+  "fade-left",
+  "fade-right",
+  "flip-up",
+  "fade-left",
+];
 const coursesCardContainer = document.getElementById("coursesCardContainer");
 
 courses.forEach((course, i) => {
   const card = document.createElement("div");
   card.classList.add("courses__card-container");
+  card.setAttribute("data-aos", AOS[i]);
   coursesCardContainer.appendChild(card);
   const headerDiv = document.createElement("div");
   card.appendChild(headerDiv);

@@ -105,11 +105,9 @@ if (window.innerWidth >= 1296) {
     }
   });
   navContainer.appendChild(navList);
-  console.log(nav);
 
   navMenu.forEach((e, i) => {
     const title = document.title;
-    console.log(title);
     if (e != "cursos") {
       const a = document.createElement("a");
       const liNav = document.createElement("li");

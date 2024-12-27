@@ -30,6 +30,7 @@ export async function sweetAlertError(error) {
   sweetalert2.fire({
     title: error,
     background: " #DB231C",
+    color: "white",
     toast: true,
     position: "top-end",
     showConfirmButton: false,

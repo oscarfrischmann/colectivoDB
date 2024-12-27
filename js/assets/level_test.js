@@ -3,8 +3,8 @@ import { openWasap } from "../main.js";
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js";
 import {
   getFirestore,
-  addDoc,
-  collection,
+  setDoc,
+  doc,
 } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js";
 const firebaseConfig = {
   apiKey: "AIzaSyAtQccyF0CBM-f9kRhY15B4E7tCpqLCmDs",
@@ -15,8 +15,13 @@ const firebaseConfig = {
   appId: "1:21235746434:web:54c3b1e041f3fb0d94169b",
   measurementId: "G-HDBEWMH17C",
 };
+
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
+
+const dateTime = luxon.DateTime;
+const now = dateTime.now().setZone("America/Buenos_Aires").toISO();
+console.log(now);
 const questions = [
   {
     q: "You _____ twelve years old.",
@@ -433,10 +438,9 @@ button.addEventListener("click", (e) => {
   };
   (async function () {
     try {
-      const docRef = await addDoc(collection(db, "tests"), test);
-      console.log(docRef.id);
+      await setDoc(doc(db, "tests", now), test);
     } catch (err) {
-      console.log("Hubo un error al enviar el test", err);
+      alert("Hubo un error al enviar el test\n intenta de nuevo");
     }
   })();
   sweetalert2

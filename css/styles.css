@@ -404,7 +404,7 @@
 .dropdown__list {
   margin: 135px 20px;
   list-style: none;
-  font-size: 2rem;
+  font-size: 1.6rem;
   display: grid;
   grid-template-rows: repeat(6, 40px);
   align-items: start;
@@ -419,7 +419,7 @@
   text-decoration: none;
   font-family: "segoe", sans-serif;
   text-transform: capitalize;
-  white-space: nowrap;
+  white-space: normal;
   transition: all 0.3s ease-in-out;
 }
 
@@ -1034,6 +1034,7 @@ nav {
 
 .nav-container a {
   text-decoration: none;
+  font-size: 1.5rem;
 }
 
 .logo {
@@ -1410,6 +1411,51 @@ th {
   background-color: rgba(64, 185, 185, 0.5215336134453781);
 }
 
+/* Trabaja con nosotros */
+
+
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.form__group {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  gap: 5px;
+}
+
+.form__group input {
+  width: 300px;
+  height: 30px;
+  padding: 1%;
+  border-radius: 10px;
+}
+
+.form__group textarea {
+  width: 300px;
+  height: 100px;
+  padding: 1%;
+  border-radius: 10px;
+  border: 2px solid #000000;
+}
+
+.tittle__text h4 {
+  font-size: 1rem;
+  color: #e2318a;
+  margin: 15px;
+}
+
+.tittle__text p {
+  font-size: 0.8rem;
+  color: #3d3d3d;
+}
 
 /* LOGIN and manage*/
 
@@ -1614,6 +1660,19 @@ th {
   background-color: #0056b3;
 }
 
+.deleteTestButton {
+  width: fit-content;
+  margin: 5px;
+  padding: 15px !important;
+  box-shadow: 2px 2px 5px black;
+  border-radius: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  gap: 5px;
+}
+
 .deleteTestButton button {
   background-color: red;
   padding: 6px;
@@ -1679,6 +1738,15 @@ th {
     width: 55%;
     /* transform: translateX(-60%); */
   }
+
+  .tittle__text {
+    width: 80%;
+  }
+
+  .tittle__text p {
+    font-size: 1.1rem;
+  }
+
 }
 
 @media (min-width: 992px) {

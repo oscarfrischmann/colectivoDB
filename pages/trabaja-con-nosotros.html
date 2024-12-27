@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="../css/styles.css" />
+
+    <title>Trabaja enseñando inglés online | El colectivo de idiomas</title>
+</head>
+
+<body>
+    <header>
+        <nav class="cambridge">
+            <i class="fas fa-solid fa-bars dropdown-icon" id="dropdownIcon"></i>
+            <img class="logo" src="../img/Logo_ECDI-transparente-03-solo-nombre.png" alt="" />
+            <h1 class="clipped">El colectivo de Idiomas</h1>
+        </nav>
+        <div class="dropdown" id="dropdownContainer">
+            <ul class="dropdown__list"></ul>
+        </div>
+    </header>
+    <main>
+        <!-- titles -->
+        <section class="tittle">
+            <article>
+                <h3 class="tittle__first">Trabaja con nosotros</h3>
+                <h2 class="tittle__main general">Enseñando</h2>
+                <h2 class="tittle__main--two cambridge">Inglés Online</h2>
+            </article>
+            <article class="tittle__text">
+                <h4>¡Únete a Nuestro Equipo de Profesores!</h4>
+
+                <p>¿Te apasionan los idiomas y la enseñanza? Estamos en búsqueda de
+                    personas
+                    dinámicas y
+                    comprometidas que quieran formar parte de nuestra comunidad educativa. Si tienes experiencia en la
+                    enseñanza de idiomas,
+                    eres creativo y disfrutas inspirando a otros, ¡queremos conocerte!</p>
+                <p>Ofrecemos un ambiente de trabajo colaborativo, formación continua y la oportunidad de crecer
+                    profesionalmente. Únete a
+                    nosotros y ayuda a nuestros estudiantes a alcanzar sus metas lingüísticas.</p>
+
+                <p>Envía tu CV y carta de presentación a <a
+                        href="mailto:ingles@elcolectivodeidiomas.com">info@elcolectivodeidiomas.com</a> o completa
+                    nuestro formulario de contacto.
+                    ¡Esperamos contar contigo!</p>
+
+            </article>
+        </section>
+        <!-- form with: nombre, email, telefono, textbox with mensaje, input with upload a CV-->
+        <form action="" class="form" id="form">
+            <div class="form__group">
+                <label for="nombre">Nombre</label>
+                <input type="text" id="nombre" name="nombre" required />
+            </div>
+            <div class="form__group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required />
+            </div>
+            <div class="form__group">
+                <label for="telefono">Teléfono</label>
+                <input type="tel" id="telefono" name="telefono" required />
+            </div>
+            <div class="form__group">
+                <label for="mensaje">Mensaje</label>
+                <textarea name="mensaje" id="mensaje" cols="30" rows="10" required></textarea>
+            </div>
+            <div class="form__group">
+                <label for="cv">Subí tu CV</label>
+                <input type="file" id="cv" name="cv" required />
+            </div>
+            <button type="submit" class="form__button btn">Enviar</button>
+        </form>
+    </main>
+
+    <footer class="footer">
+        <div class="footer__logo">
+            <img src="../img/Logo_ECDI-transparente.png" alt="" />
+        </div>
+        <div class="footer__info">
+            <div class="footer__contacto footer-box">
+                <h3 class="footer__info--tittle">contacto</h3>
+                <div>
+                    <span class="footer__info--item">lunes / viernes: 8 a 20hs</span>
+                    <span class="footer__info--item">+54 9 11 3285 0921</span>
+                    <span class="footer__info--item">ingles@elcolectivodeidiomas.com</span>
+                </div>
+            </div>
+            <div class="footer-box">
+                <h3 class="footer__info--tittle" style="white-space: nowrap">
+                    Redes sociales
+                </h3>
+                <div class="footer__media">
+                    <a href="https://wa.me/5491132850921?text=Hola!%20Quisiera%20informaci%C3%B3n%20sobre%20los%20cursos%20de%20ingles."
+                        target="_blank"><img src="../img/whatsapp-rosa.png" alt="" /></a>
+                    <a href="https://www.instagram.com/elcolectivodeidiomas/" target="_blank"><img src="../img/ig.png"
+                            alt="" /></a>
+                    <a href="https://www.facebook.com/profile.php?id=100090341718972" target="_blank"><img
+                            src="../img/facebook.white.png" alt="" /></a>
+                    <a href="mailto:ingles@elcolectivodeidiomas.com"><img src="../img/mailto.grey.png" alt="" /></a>
+                </div>
+            </div>
+            <div class="footer__enlaces footer-box">
+                <h3 class="footer__info--tittle">enlaces rápidos</h3>
+                <ul class="footer__links">
+                    <li class="footer__links--item"><a href="../index.html">home</a></li>
+                    <li class="footer__links--item"><a href="../#aboutUs">quienes somos</a></li>
+                    <li class="footer__links--item"><a href="../#coursesCardContainer2">cursos</a></li>
+                    <li class="footer__links--item"><a href="">precios</a></li>
+                    <li class="footer__links--item"><a href="./enlaces-utiles.html">freebies</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer__end">
+            <a href="https://wa.me/5491163549866" target="_blank">
+                <span>developed by</span>
+                <span>OF</span>
+                <!-- <span>frontend</span> -->
+            </a>
+        </div>
+    </footer>
+    <script src="../js/assets/dropdown_nav.js"></script>
+    <script type="module" src="../js/main.js" defer></script>
+</body>
+
+</html>

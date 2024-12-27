@@ -3,8 +3,8 @@ const navMenu = [
   "quiénes somos",
   "cursos",
   "precios",
-  // 'freebies',
   "enlaces",
+  "Trabaja con nosotros",
 ];
 const moreCoursesDropdown = [
   "cursos de inglés general",
@@ -26,6 +26,7 @@ const navLinksHome = [
   "#",
   "/pages/precios-cursos-de-ingles.html",
   "/pages/enlaces-utiles.html",
+  "/pages/trabaja-con-nosotros.html",
 ];
 const dropdownContainer = document.getElementById("dropdownContainer");
 const dropdownIcon = document.getElementById("dropdownIcon");

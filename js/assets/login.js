@@ -323,7 +323,6 @@ export const priceCamb = async () => {
 
 // export const newPriceCambDB = await priceCamb();
 
-//*test
 const cambScheduleDataDB2 = { cambSchedule: [] };
 const cambForm = document.getElementById("cambScheduleDB");
 const addCambButton = document.getElementById("addCamb");
@@ -474,7 +473,7 @@ export async function getTalleresSchedule() {
 }
 
 //TESTS de NIVEL
-
+const dateTime = luxon.DateTime;
 async function getTests() {
   try {
     return await getDocs(collection(db, "tests"));
@@ -485,14 +484,22 @@ async function getTests() {
 async function renderTests() {
   let oneTest = document.createElement("div");
   const DBtests = await getTests();
+  if (DBtests.empty) {
+    sweetAlertError("No hay tests");
+  }
+
   DBtests.forEach((data) => {
     const test = data.data();
+    console.log(data);
     oneTest.innerHTML += `
     <div class="deleteTestButton" id="${data.id}">
-    <p>nombre: ${test.nombre}</p> 
-    <span>email: </span><a href="mailto:${test.email}"> ${test.email}</a> 
-    <p>puntos: ${test.puntos}</p> 
-    <button data-id="${data.id}" class="delete_button">X</button>
+      <h3>${dateTime
+        .fromISO(data.id)
+        .toLocaleString(dateTime.DATETIME_MED)}</h3>
+      <p>${test.nombre}</p> 
+      <a href="mailto:${test.email}"> ${test.email}</a> 
+      <p>Puntos: ${test.puntos}</p> 
+      <button data-id="${data.id}" class="delete_button">X</button>
     </div>
     `;
   });

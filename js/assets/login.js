@@ -473,53 +473,58 @@ export async function getTalleresSchedule() {
 }
 
 //TESTS de NIVEL
-const dateTime = luxon.DateTime;
-async function getTests() {
-  try {
-    return await getDocs(collection(db, "tests"));
-  } catch (err) {
-    sweetAlertError("Error al traer los tests");
+if (
+  document.title === "Colectivo Login" ||
+  document.title === "English Level Assessment Test"
+) {
+  const dateTime = luxon.DateTime;
+  async function getTests() {
+    try {
+      return await getDocs(collection(db, "tests"));
+    } catch (err) {
+      sweetAlertError("Error al traer los tests");
+    }
   }
-}
-async function renderTests() {
-  let oneTest = document.createElement("div");
-  const DBtests = await getTests();
-  if (DBtests.empty) {
-    sweetAlertError("No hay tests");
-  }
+  async function renderTests() {
+    let oneTest = document.createElement("div");
+    const DBtests = await getTests();
+    if (DBtests.empty) {
+      sweetAlertError("No hay tests");
+    }
 
-  DBtests.forEach((data) => {
-    const test = data.data();
-    console.log(data);
-    oneTest.innerHTML += `
-    <div class="deleteTestButton" id="${data.id}">
-      <h3>${dateTime
-        .fromISO(data.id)
-        .toLocaleString(dateTime.DATETIME_MED)}</h3>
-      <p>${test.nombre}</p> 
-      <a href="mailto:${test.email}"> ${test.email}</a> 
-      <p>Puntos: ${test.puntos}</p> 
-      <button data-id="${data.id}" class="delete_button">X</button>
-    </div>
-    `;
-  });
-  await tests.appendChild(oneTest);
-  // Delete Test by one
-  const deleteButtons = document.querySelectorAll(".deleteTestButton button");
-  for (let btn of deleteButtons) {
-    btn.addEventListener("click", async ({ target: { dataset } }) => {
-      await deleteDoc(doc(db, "tests", dataset.id));
-      for (const child of oneTest.children) {
-        if (child.id === dataset.id) {
-          child.style.display = "none";
-        } // Logs the id of each child (e.g., "data.id")
-      }
+    DBtests.forEach((data) => {
+      const test = data.data();
+      console.log(data);
+      oneTest.innerHTML += `
+      <div class="deleteTestButton" id="${data.id}">
+        <h3>${dateTime
+          .fromISO(data.id)
+          .toLocaleString(dateTime.DATETIME_MED)}</h3>
+        <p>${test.nombre}</p> 
+        <a href="mailto:${test.email}"> ${test.email}</a> 
+        <p>Puntos: ${test.puntos}</p> 
+        <button data-id="${data.id}" class="delete_button">X</button>
+      </div>
+      `;
     });
+    await tests.appendChild(oneTest);
+    // Delete Test by one
+    const deleteButtons = document.querySelectorAll(".deleteTestButton button");
+    for (let btn of deleteButtons) {
+      btn.addEventListener("click", async ({ target: { dataset } }) => {
+        await deleteDoc(doc(db, "tests", dataset.id));
+        for (const child of oneTest.children) {
+          if (child.id === dataset.id) {
+            child.style.display = "none";
+          } // Logs the id of each child (e.g., "data.id")
+        }
+      });
+    }
   }
-}
-const getTestBtn = document.getElementById("getTestsBtn");
-if (getTestBtn) {
-  getTestBtn.addEventListener("click", renderTests);
+  const getTestBtn = document.getElementById("getTestsBtn");
+  if (getTestBtn) {
+    getTestBtn.addEventListener("click", renderTests);
+  }
 }
 
 // const tests = document.getElementById("tests");

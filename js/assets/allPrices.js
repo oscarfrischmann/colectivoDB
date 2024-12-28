@@ -3,7 +3,8 @@ import { openWasap } from "../main.js";
 
 const table = document.getElementById("allPrices");
 const promoBtn = document.getElementById("wasap");
-
+const generalPrices = await login.getNewGeneralPrices();
+const cambPrices = await login.priceCamb();
 promoBtn.addEventListener("click", openWasap);
 table.innerHTML = `
  <table>
@@ -15,12 +16,12 @@ table.innerHTML = `
             <tr>
                 <td>Cursos de Inglés General (mensual)</td>
                 <td>${login.preciosDolarDB.general}</td>
-                <td>${login.getNewGeneralPricesDB.valueOne}</td>
+                <td>${generalPrices.valueOne}</td>
             </tr>
             <tr>
                 <td>Preparacion de Exámenes Internacionales (mensual)</td>
                 <td>${login.preciosDolarDB.cambridge}</td>
-                <td>${login.newPriceCambDB.monthlyCamb}</td>
+                <td>${cambPrices.monthlyCamb}</td>
             </tr>
             <tr>
                 <td>Seminarios</td>

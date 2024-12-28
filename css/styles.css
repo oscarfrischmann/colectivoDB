@@ -1455,6 +1455,7 @@ th {
 .tittle__text p {
   font-size: 0.8rem;
   color: #3d3d3d;
+  margin: 15px;
 }
 
 /* LOGIN and manage*/
@@ -1723,6 +1724,8 @@ th {
   text-align: center;
 }
 
+/* work with us */
+
 
 @media (min-width: 768px) {
   body {
@@ -1744,7 +1747,7 @@ th {
   }
 
   .tittle__text {
-    /* width: 80%; */
+    /* width: 50%; */
   }
 
   .tittle__text p {

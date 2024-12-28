@@ -700,7 +700,7 @@ if (preciosUSD) {
   });
 }
 
-async function getPreciosDolar() {
+export async function getPreciosDolar() {
   try {
     const preciosDolar = doc(db, "prices", "dolares");
     const dolarSNAP = await getDoc(preciosDolar);
@@ -710,5 +710,3 @@ async function getPreciosDolar() {
     throw new Error("get preciosDolar", err);
   }
 }
-
-export const preciosDolarDB = await getPreciosDolar();

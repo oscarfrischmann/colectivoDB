@@ -158,8 +158,6 @@
         <section class="seminarios login">
             <h2>Seminarios</h2>
             <article>
-                <div>
-                </div>
                 <div class="shed-container pricesDB">
                     <form id="seminarioImgForm" enctype="multipart/form-data" class="">
                         <div class="">
@@ -222,9 +220,81 @@
                 <button type="reset">Reset Form</button>
             </form>
         </section>
-        <section id="mainPopUp"></section>
+        <section id="mainPopUp" class="login preciosDolar">
+            <h2>Pop Up</h2>
+            <p>Configuración de Pop Up</p>
+            <ul>
+                <li>Para cambiar la imagen, subir una nueva, ver imagenes, usar.</li>
+                <li>Se puede usar sólo imagen, para eso, escribir el número 0 en los otros campos</li>
+                <li>Los campos en 0 NO SE MUESTRAN, por ejemplo, si ahora vas a agregar todo un popup nuevo, completas
+                    todos los campos y estos van a reemplazar</li>
+
+                <li>Si no querés el botón de OK (confirm, lo usamos para redirigir, por ejemplo a CURSOS) escribir el
+                    numero 0(cero) --- SIEMPRE hay que ingresar 0 o el texto del botón</li>
+                <li>La url de redirección es la acción del botón de OK, por eso lo anulamos con 0 si queres que una vez
+                    visto el popup se siga en la home</li>
+                <li>Para cambiar la URL de redirección, seleccionar una de las opciones del menú desplegable</li>
+                <li>Para actualizar 1 solo campo, redactar ese campo ( o imagen ) y dejar los otros campos en blanco
+                </li>
+                <li>El botón "Mostrar popUp?" si querés que haya un popup va en SI, sino queda en NO</li>
+                <li>cualquier duda consultame!!!</li>
+            </ul>
+            <article>
+                <div class="shed-container pricesDB">
+                    <form id="popUpImgForm" enctype="multipart/form-data" class="">
+                        <div class="">
+                            <input class="" style="max-width: 500px;" type="file" id="popUpImgs" multiple>
+                            <button type="submit" class="btn btn-primary ms-1">enviar</button>
+                        </div>
+                    </form>
+                    <div class="container">
+                        <button type="button" id="showPopUpImages" class="btn btn-primary m-5">Ver imágenes</button>
+                        <div class="popUp-img-container" id="popUpImgContainer"></div>
+                    </div>
+                </div>
+            </article>
+            <form action="" class="login" id="popUpForm">
+                <label for="popUpTitle">Título</label>
+                <input type="text" name="popUpTitle" id="popUpTitle">
+                <label for="popUpImg">URL de la imagen</label>
+                <input type="text" name="popUpImg" id="popUpImg" placeholder="">
+                <label for="popUpDescription">Descripción</label>
+                <textarea cols="30" rows="10" name="popUpDescription" id="popUpDescription"></textarea>
+                <label for="popUpRedirect">URL de redirección</label>
+                <select type="text" name="popUpRedirect" id="popUpRedirect" placeholder="https://www.google.com">
+                    <option value=" ">No cambiar</option>
+                    <option value="0">Home</option>
+                    <!-- <option value="https://elcolectivodeidiomas.com">Home</option> -->
+                    <option value="https://elcolectivodeidiomas.com/#aboutUs">Quienes Somos</option>
+                    <option value="https://elcolectivodeidiomas.com/pages/cursos-ingles-general.html">Cursos</option>
+                    <option value="https://elcolectivodeidiomas.com/pages/precios-cursos-de-ingles.html">Precios
+                    </option>
+                    <option value="https://elcolectivodeidiomas.com/pages/enlaces-utiles.html">Enlaces</option>
+                    <option value="https://elcolectivodeidiomas.com/pages/trabaja-con-nosotros.html">Trabaja con
+                        Nosotros</option>
+                </select>
+                <label for="popUpOK">texto botón OK</label>
+                <input type="text" name="popUpOK" id="popUpOK" placeholder="Ver curso" required>
+                <label for="popUpCancel">texto botónm CERRAR</label>
+                <input type="text" name="popUpCancel" id="popUpCancel" placeholder="no, gracias!">
+
+                <div class="toggle-button-container">
+                    <label for="popUpActive" class="checkbox-label">Mostrar PopUp?</label>
+                    <div class="toggle-button-cover">
+                        <div id="button-3" class="button r">
+                            <input class="checkbox" type="checkbox" id="popUpActive" name="popUpActive" value="true" />
+                            <div class="knobs"></div>
+                            <div class="layer"></div>
+                        </div>
+                    </div>
+                </div>
+                <button type="submit">Enviar</button>
+                <button type="reset">Reset Form</button>
+            </form>
+        </section>
     </main>
     <script src="https://cdn.jsdelivr.net/npm/luxon@3.4.3/build/global/luxon.min.js"></script>
+    <script type="module" src="../js/main.js"></script>
     <script type="module" src="../js/assets/login.js"></script>
 </body>
 

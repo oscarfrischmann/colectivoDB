@@ -126,3 +126,12 @@ if (window.innerWidth >= 1296) {
     }
   });
 }
+
+/* add favicon*/
+const title = document.title;
+const favicon = document.createElement("link");
+favicon.rel = "icon";
+title === "El colectivo de Idiomas || Aprender inglés online"
+  ? (favicon.href = "./img/favicon-16x16.png")
+  : (favicon.href = "../img/favicon-16x16.png");
+document.head.appendChild(favicon);

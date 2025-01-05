@@ -40,26 +40,41 @@ export async function sweetAlertError(error) {
   });
 }
 
+//*PopUp
 if (document.title === "El colectivo de Idiomas || Aprender inglés online") {
-  console.log("Hola");
-  sweetalert2
-    .fire({
-      // title: `Excelent! respuestas correctas`,
-      imageUrl: "./img/popUpColectivo.jpg",
-      imageWidth: "75%",
-      // text: "Ya completaste la parte escrita. Escribinos para completar la nivelación con una entrevista por Zoom",
-      showConfirmButton: true,
-      showCancelButton: true,
-      cancelButtonText: "Tal vez después",
-      confirmButtonText: "Ver horarios",
-    })
-    .then((result) => {
-      if (result.isConfirmed) {
-        window.location.replace(
-          "https://elcolectivodeidiomas.com/pages/cursos-ingles-general.html"
-        );
-      } else {
-        // window.location.href = "./index.html";
-      }
-    });
+  const popUp = await login.getPopUp();
+
+  if (popUp.active) {
+    const usersVersion = localStorage.getItem("visited");
+    let visited = popUp.version.seconds.toString();
+    console.log("popup active");
+
+    if (visited !== usersVersion || usersVersion === null) {
+      console.log("popUp", popUp);
+      localStorage.setItem("visited", visited);
+
+      sweetalert2
+        .fire({
+          imageUrl: `${popUp.img}`,
+          imageWidth: "75%",
+          title: `${popUp.title}`,
+          text: `${popUp.text}`,
+          showConfirmButton: popUp.okButtonNot,
+          showCancelButton: true,
+          cancelButtonText: `${popUp.cancelButton}`,
+          confirmButtonText: `${popUp.okButton}`,
+        })
+        .then((result) => {
+          if (result.isConfirmed) {
+            window.location.replace(`${popUp.redirect}`);
+          } else {
+            // window.location.href = "./index.html";
+          }
+        });
+    } else {
+      console.log("Ya visitaste la página");
+    }
+  } else {
+    console.log("popup inactive");
+  }
 }

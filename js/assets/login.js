@@ -9,6 +9,7 @@ import {
   setDoc,
   updateDoc,
   deleteDoc,
+  serverTimestamp,
 } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js";
 import {
   getAuth,
@@ -555,7 +556,7 @@ const uploadImages = async (HtMLform, fileInput, DBdirectory) => {
 
 uploadImages("seminarioImgForm", "seminarioImgs", "seminario");
 const imgLinks = [];
-
+console.log(imgLinks);
 const showImages = (DBdirectory, imgsContainer, button, URLinput, form) => {
   const listRef = ref(storage, `${DBdirectory}`);
   const HTMLimgsContainer = document.getElementById(`${imgsContainer}`);
@@ -614,9 +615,11 @@ if (seminariosForm) {
           seminario[key] = value;
         }
       }
+
       await updateDoc(doc(db, "seminarios", "seminario"), seminario, {
         merge: true,
       });
+
       alert("Seminario cargado! OK!");
     } catch (err) {
       console.log(err, "set seminario ERROR");
@@ -635,6 +638,7 @@ showImages(
 async function useImageButtons(DBdirectory, form, URLinput) {
   setTimeout(() => {
     const use = document.querySelectorAll(`.${DBdirectory}`);
+    console.log(use);
     use.forEach((button, i) => {
       if (button.id.includes(" ")) {
         button.id = button.id.split(" ").join("");
@@ -708,5 +712,71 @@ export async function getPreciosDolar() {
     return preciosDolarDB;
   } catch (err) {
     throw new Error("get preciosDolar", err);
+  }
+}
+
+//popup
+//setPopUp
+const popUpForm = document.getElementById("popUpImgForm");
+const popUp = document.getElementById("popUpForm");
+if (popUpForm) {
+  uploadImages("popUpImgForm", "popUpImgs", "popUp");
+
+  showImages(
+    "popUp",
+    "popUpImgContainer",
+    "showPopUpImages",
+    "popUpImg",
+    popUp
+  );
+}
+
+if (popUp) {
+  const popUpForm = document.getElementById("popUpForm");
+  popUpForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const popUpData = {
+      title: popUpForm["popUpTitle"].value,
+      img: popUpForm["popUpImg"].value,
+      text: popUpForm["popUpDescription"].value,
+      redirect: popUpForm["popUpRedirect"].value,
+      okButton: popUpForm["popUpOK"].value,
+      okButtonNot: popUpForm["popUpOK"].value === "0" ? false : true,
+      cancelButton: popUpForm["popUpCancel"].value,
+      version: serverTimestamp(),
+      active: popUpForm["popUpActive"].checked,
+    };
+    console.log(popUpData);
+    try {
+      for (let [key, value] of Object.entries(popUpData)) {
+        if (value === "") {
+          delete popUpData[key];
+        } else if (value === "0" && key !== "okButtonNot") {
+          popUpData[key] = "";
+        } else if (key === "active" && value === false) {
+          console.log("active", value);
+          popUpData[key] = false;
+        }
+      }
+      await setDoc(doc(db, "popUp", "popUp"), popUpData, { merge: true });
+      alert("PopUp OK!");
+      window.location.reload();
+    } catch (err) {
+      alert("PopUp ERROR!");
+      console.log(err);
+    }
+  });
+}
+
+//*getPopUp
+export async function getPopUp() {
+  console.log("getPopUp");
+  try {
+    const popUp = doc(db, "popUp", "popUp");
+    const popUpSnap = await getDoc(popUp);
+    const popUpDB = popUpSnap.data();
+    return popUpDB;
+  } catch (err) {
+    throw new Error("get popUp", err);
   }
 }

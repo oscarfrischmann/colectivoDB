@@ -10,7 +10,7 @@ if (descriptionCard) {
   descriptionCard.innerHTML = `
         <h2>${seminario.title}</h2>
         <div class="courses__description--tittle">
-          <img src="${seminario.thumbnail}" style="box-shadow: 2px 2px 10px; border-radius: 3px" alt="" />
+          <img src="${seminario.thumbnail}" style="box-shadow: 2px 2px 10px; border-radius: 3px" alt="Imagen relativa al tipo de seminario" />
         </div>
         <p class="seminario-p">${seminario.description}</p>
     `;
